@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.project.android.nctu.nomorelost.utils.ApiRequestClient;
@@ -38,6 +39,7 @@ public class LostItemActivity extends AppCompatActivity {
         findView();
         getLostitemList();
 
+        Log.d(TAG, LostItem.toString());
     }
 
     private void getLostitemList() {
@@ -47,20 +49,24 @@ public class LostItemActivity extends AppCompatActivity {
         ApiRequestClient.get(url, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                try {
-                    JSONObject lostitem = response;
+            try {
+                JSONObject lostitem = response;
 
-                    LostItem.put("mail", lostitem.getString("mail"));
-                    LostItem.put("contact", lostitem.getString("contact"));
-                    LostItem.put("description", lostitem.getString("description"));
+                LostItem.put("mail", lostitem.getString("mail"));
+                LostItem.put("contact", lostitem.getString("contact"));
+                LostItem.put("description", lostitem.getString("description"));
 
-                    Log.d(TAG, "mail: " + lostitem.getString("mail"));
-                    Log.d(TAG, "contact: " + lostitem.getString("contact"));
-                    Log.d(TAG, "description: " + lostitem.getString("description"));
+                Log.d(TAG, "mail: " + lostitem.getString("mail"));
+                Log.d(TAG, "contact: " + lostitem.getString("contact"));
+                Log.d(TAG, "description: " + lostitem.getString("description"));
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                textViewMail.setText(lostitem.getString("mail"));
+//                textViewContact.setText(lostitem.getString("contact"));
+//                textViewDescription.setText(lostitem.getString("description"));
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             }
         });
     }

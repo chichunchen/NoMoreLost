@@ -2,11 +2,15 @@ package com.project.android.nctu.nomorelost;
 
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.project.android.nctu.nomorelost.utils.ApiRequestClient;
@@ -79,6 +83,14 @@ public class LostitemsListActivity extends ListActivity {
 
         setListAdapter(adapter);
         getListView().setTextFilterEnabled(true);
+    }
+
+    @Override
+    protected void onListItemClick (ListView l, View v, int position, long id) {
+        Intent intent = new Intent(this, LostItemActivity.class);
+        String lostitem_id = String.valueOf(position + 1);
+        intent.putExtra("id", lostitem_id);
+        startActivity(intent);
     }
 
     private void findView() {
