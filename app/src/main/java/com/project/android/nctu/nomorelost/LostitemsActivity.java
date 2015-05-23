@@ -1,11 +1,14 @@
 package com.project.android.nctu.nomorelost;
 
 
+import android.app.ListActivity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
+
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.project.android.nctu.nomorelost.utils.ApiRequestClient;
 
@@ -18,19 +21,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class LostitemsActivity extends AppCompatActivity {
+public class LostitemsActivity extends ListActivity {
 
     private final String TAG = "LostitemsActivity";
-
     public JSONArray lostitems;
-
     private ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
+
+    private SimpleAdapter adapter;
+    private TextView textViewContact, textViewDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lostitems);
 
+        findView();
         getLostitemsList();
     }
 
@@ -66,8 +70,25 @@ public class LostitemsActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
+                setSimpleAdapter();
             }
         });
+    }
+
+    private void setSimpleAdapter() {
+        adapter = new SimpleAdapter(getApplicationContext(),
+                                    list,
+                                    R.layout.listview_lostitems,
+                                    new String[]{"description", "contact"},
+                                    new int[]{R.id.textView_description, R.id.textView_contact});
+
+        setListAdapter(adapter);
+        getListView().setTextFilterEnabled(true);
+    }
+
+    private void findView() {
+        textViewContact = (TextView) findViewById(R.id.textView_contact);
+        textViewDescription = (TextView) findViewById(R.id.textView_description);
     }
 
     @Override
