@@ -21,6 +21,14 @@
             android:onClick="lostItems" />
 
         <Button
+            android:id="@+id/showFirstItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="First Lost"
+            android:onClick="firstLost" />
+
+        <Button
             android:id="@+id/uploadListitem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

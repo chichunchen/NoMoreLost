@@ -40,7 +40,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void lostItems(View view) {
-        Intent intent = new Intent(this, LostitemsActivity.class);
+        Intent intent = new Intent(this, LostitemsListActivity.class);
         startActivity(intent);
+    }
+
+    public void firstLost(View view) {
+        Intent i = new Intent(this, LostItemActivity.class);
+        i.putExtra("id", "1");
+        startActivity(i);
     }
 }

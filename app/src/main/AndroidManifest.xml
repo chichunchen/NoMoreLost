@@ -29,8 +29,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LostitemsActivity"
-            android:label="@string/title_activity_lostitems" >
+            android:name=".LostitemsListActivity"
+            android:label="@string/title_activity_lost_items_list" >
+        </activity>
+        <activity
+            android:name=".LostItemActivity"
+            android:label="@string/title_activity_lost_item" >
         </activity>
     </application>
 

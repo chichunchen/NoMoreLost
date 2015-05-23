@@ -2,7 +2,8 @@
     <!-- Settings -->
     <string name="app_name">NoMoreLost</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_lostitems">LostitemsActivity</string>
+    <string name="title_activity_lost_items_list">LostitemsListActivity</string>
+    <string name="title_activity_lost_item">LostItemActivity</string>
 
     <!-- Main Activity -->
     <string name="lostitems">瀏覽遺失物</string>

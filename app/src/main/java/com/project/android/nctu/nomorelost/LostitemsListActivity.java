@@ -3,7 +3,6 @@ package com.project.android.nctu.nomorelost;
 
 import android.app.ListActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.SimpleAdapter;
@@ -21,9 +20,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class LostitemsActivity extends ListActivity {
+public class LostitemsListActivity extends ListActivity {
 
-    private final String TAG = "LostitemsActivity";
+    private final String TAG = "LostitemsListActivity";
     public JSONArray lostitems;
     private ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
 
@@ -50,7 +49,7 @@ public class LostitemsActivity extends ListActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray lostitemsList) {
                 lostitems = lostitemsList;
-                Log.e(TAG, "lostitems: " + lostitems);
+
                 for (int i = 0; i < lostitems.length(); i++) {
                     try {
                         JSONObject lostitem = (JSONObject) lostitems.get(i);
@@ -60,10 +59,6 @@ public class LostitemsActivity extends ListActivity {
                         item.put("mail", lostitem.getString("mail"));
                         item.put("contact", lostitem.getString("contact"));
                         item.put("description", lostitem.getString("description"));
-
-                        Log.e(TAG, "mail: " + lostitem.getString("mail"));
-                        Log.e(TAG, "contact: " + lostitem.getString("contact"));
-                        Log.e(TAG, "description: " + lostitem.getString("description"));
 
                         list.add(item);
                     } catch (JSONException e) {
@@ -78,7 +73,7 @@ public class LostitemsActivity extends ListActivity {
     private void setSimpleAdapter() {
         adapter = new SimpleAdapter(getApplicationContext(),
                                     list,
-                                    R.layout.listview_lostitems,
+                                    R.layout.listview_lost_items,
                                     new String[]{"description", "contact"},
                                     new int[]{R.id.textView_description, R.id.textView_contact});
 
