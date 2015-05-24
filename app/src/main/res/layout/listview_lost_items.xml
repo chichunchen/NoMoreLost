@@ -8,11 +8,14 @@
     <LinearLayout android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:id="@+id/linearLayout1" >
-        <ImageView android:layout_height="wrap_content"
-            android:id="@+id/imageView_lostitemImage"
+        <TextView
             android:layout_width="wrap_content"
-            >
-        </ImageView>
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="category"
+            android:id="@+id/lostitem_category"
+            android:textColor="#ffff8b15"
+            android:layout_gravity="center_horizontal" />
 
         <TextView android:text="TextView"
             android:id="@+id/textView_description"

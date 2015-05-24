@@ -29,7 +29,7 @@
             android:label="@string/title_activity_lost_items_list" >
         </activity>
         <activity
-            android:name=".LostItemActivity"
+            android:name=".LostItemDetailsActivity"
             android:label="@string/title_activity_lost_item" >
         </activity>
     </application>

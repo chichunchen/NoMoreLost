@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.project.android.nctu.nomorelost.utils.ApiRequestClient;
@@ -32,7 +31,7 @@ public class LostitemsListActivity extends ListActivity {
     private ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
 
     private SimpleAdapter adapter;
-    private TextView textViewContact, textViewDescription;
+    private TextView textViewCategory, textViewContact, textViewDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +64,11 @@ public class LostitemsListActivity extends ListActivity {
                         item.put("contact", lostitem.getString("contact"));
                         item.put("description", lostitem.getString("description"));
 
+                        JSONObject category = lostitem.getJSONObject("category");
+                        item.put("category", category.getString("name"));
+
+                        item.put("created_at", lostitem.getString("created_at"));
+
                         list.add(item);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -79,8 +83,8 @@ public class LostitemsListActivity extends ListActivity {
         adapter = new SimpleAdapter(getApplicationContext(),
                                     list,
                                     R.layout.listview_lost_items,
-                                    new String[]{"description", "contact"},
-                                    new int[]{R.id.textView_description, R.id.textView_contact});
+                                    new String[]{"category", "description", "contact"},
+                                    new int[]{R.id.lostitem_category, R.id.textView_description, R.id.textView_contact});
 
         setListAdapter(adapter);
         getListView().setTextFilterEnabled(true);
@@ -92,7 +96,7 @@ public class LostitemsListActivity extends ListActivity {
             JSONObject lostitem = (JSONObject) lostitems.get(position);
             Log.e(TAG, "123: " + lostitem);
             Intent intent = new Intent();
-            intent.setClass(this, LostItemActivity.class);
+            intent.setClass(this, LostItemDetailsActivity.class);
             Bundle bundle = new Bundle();
             bundle.putString("lostitem", lostitem.toString());
             intent.putExtras(bundle);
@@ -105,6 +109,7 @@ public class LostitemsListActivity extends ListActivity {
     }
 
     private void findView() {
+        textViewCategory = (TextView) findViewById(R.id.lostitem_category);
         textViewContact = (TextView) findViewById(R.id.textView_contact);
         textViewDescription = (TextView) findViewById(R.id.textView_description);
     }

@@ -11,7 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class LostItemActivity extends AppCompatActivity {
+public class LostItemDetailsActivity extends AppCompatActivity {
 
     private final String TAG = "LostItemActivity";
     private JSONObject lostItem;
@@ -28,7 +28,7 @@ public class LostItemActivity extends AppCompatActivity {
 
         try {
             lostItem = new JSONObject(bundle.getString("lostitem"));
-            Log.d(TAG, "detail: " + lostItem);
+//            Log.d(TAG, "category: " + lostItem.getString("category"));
 
             textViewMail.setText(lostItem.getString("mail"));
             textViewContact.setText(lostItem.getString("contact"));
