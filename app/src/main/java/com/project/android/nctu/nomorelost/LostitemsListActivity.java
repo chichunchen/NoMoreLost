@@ -4,6 +4,7 @@ package com.project.android.nctu.nomorelost;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -87,10 +88,20 @@ public class LostitemsListActivity extends ListActivity {
 
     @Override
     protected void onListItemClick (ListView l, View v, int position, long id) {
-        Intent intent = new Intent(this, LostItemActivity.class);
-        String lostitem_id = String.valueOf(position + 1);
-        intent.putExtra("id", lostitem_id);
-        startActivity(intent);
+        try {
+            JSONObject lostitem = (JSONObject) lostitems.get(position);
+            Log.e(TAG, "123: " + lostitem);
+            Intent intent = new Intent();
+            intent.setClass(this, LostItemActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("lostitem", lostitem.toString());
+            intent.putExtras(bundle);
+
+            startActivity(intent);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     private void findView() {

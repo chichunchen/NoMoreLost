@@ -1,6 +1,5 @@
 package com.project.android.nctu.nomorelost;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -8,21 +7,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.project.android.nctu.nomorelost.utils.ApiRequestClient;
-
-import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.HashMap;
 
 
 public class LostItemActivity extends AppCompatActivity {
 
     private final String TAG = "LostItemActivity";
-    private HashMap<String, Object> LostItem = new HashMap<String, Object>();
-    private String lostItemId;
+    private JSONObject lostItem;
     private TextView textViewMail, textViewContact, textViewDescription;
 
     @Override
@@ -30,39 +22,21 @@ public class LostItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lost_item);
 
-        Intent intent = getIntent();
-        lostItemId = intent.getExtras().getString("id");
-
         findView();
-        getLostitemList();
-    }
 
-    private void getLostitemList() {
-        String url = "http://52.68.136.81:3000/api/lostitems/" + lostItemId;
-        Log.d(TAG, url);
+        Bundle bundle = this.getIntent().getExtras();
 
-        ApiRequestClient.get(url, null, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                try {
-                    JSONObject lostitem = response;
+        try {
+            lostItem = new JSONObject(bundle.getString("lostitem"));
+            Log.d(TAG, "detail: " + lostItem);
 
-                    LostItem.put("mail", lostitem.getString("mail"));
-                    LostItem.put("contact", lostitem.getString("contact"));
-                    LostItem.put("description", lostitem.getString("description"));
+            textViewMail.setText(lostItem.getString("mail"));
+            textViewContact.setText(lostItem.getString("contact"));
+            textViewDescription.setText(lostItem.getString("description"));
 
-                    Log.d(TAG, "mail: " + LostItem.get("mail").toString());
-                    Log.d(TAG, "contact: " + LostItem.get("contact").toString());
-                    Log.d(TAG, "description: " + LostItem.get("description").toString());
-
-                    textViewMail.setText(LostItem.get("mail").toString());
-                    textViewContact.setText(LostItem.get("contact").toString());
-                    textViewDescription.setText(LostItem.get("description").toString());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     private void findView() {
