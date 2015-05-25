@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black_overlay"
+    android:background="@drawable/index_background"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -38,13 +38,13 @@
                 <Button
                     android:id="@+id/showLostitems"
                     style="@style/MenuButton"
-                    android:background="@drawable/upload_lostitem"
+                    android:background="@drawable/list_lostitems"
                     android:onClick="lostItems" />
 
                 <Button
                     android:id="@+id/uploadListitem"
                     style="@style/MenuButton"
-                    android:background="@drawable/list_lostitems"
+                    android:background="@drawable/upload_lostitem"
                     android:onClick="uploadLostItem" />
             </TableRow>
 
