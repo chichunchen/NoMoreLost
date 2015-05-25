@@ -1,13 +1,14 @@
 package com.project.android.nctu.nomorelost;
 
 
-import android.app.ListActivity;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -24,9 +25,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class LostitemsListActivity extends ListActivity {
+public class LostitemsListActivity extends Activity {
 
     private final String TAG = "LostitemsListActivity";
+    private ListView mListView;
     public JSONArray lostitems;
     private ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
 
@@ -36,6 +38,7 @@ public class LostitemsListActivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.lostitems_list_activity);
 
         findView();
         getLostitemsList();
@@ -82,36 +85,44 @@ public class LostitemsListActivity extends ListActivity {
     private void setSimpleAdapter() {
         adapter = new SimpleAdapter(getApplicationContext(),
                                     list,
-                                    R.layout.listview_lost_items,
+                                    R.layout.lostitems_row,
                                     new String[]{"category", "description", "contact"},
                                     new int[]{R.id.lostitem_category, R.id.textView_description, R.id.textView_contact});
 
-        setListAdapter(adapter);
-        getListView().setTextFilterEnabled(true);
+        mListView.setAdapter(adapter);
+        mListView.setOnItemClickListener(itemClickListener);
     }
 
-    @Override
-    protected void onListItemClick (ListView l, View v, int position, long id) {
-        try {
-            JSONObject lostitem = (JSONObject) lostitems.get(position);
-            Log.e(TAG, "123: " + lostitem);
-            Intent intent = new Intent();
-            intent.setClass(this, LostItemDetailsActivity.class);
-            Bundle bundle = new Bundle();
-            bundle.putString("lostitem", lostitem.toString());
-            intent.putExtras(bundle);
+    private AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
 
-            startActivity(intent);
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            try {
+                JSONObject lostitem = (JSONObject) lostitems.get(position);
+                Log.e(TAG, "lostitem: " + lostitem);
+                Intent intent = new Intent();
+                intent.setClass(getApplicationContext(), LostItemDetailsActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("lostitem", lostitem.toString());
+                intent.putExtras(bundle);
 
-        } catch (JSONException e) {
-            e.printStackTrace();
+                startActivity(intent);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
-    }
+    };
 
     private void findView() {
+        mListView = (ListView)findViewById(R.id.lostitem_list);
         textViewCategory = (TextView) findViewById(R.id.lostitem_category);
         textViewContact = (TextView) findViewById(R.id.textView_contact);
         textViewDescription = (TextView) findViewById(R.id.textView_description);
+    }
+
+    public void back(View view) {
+        finish();
     }
 
     @Override
