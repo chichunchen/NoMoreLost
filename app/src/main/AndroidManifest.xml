@@ -32,6 +32,10 @@
             android:name=".LostItemDetailsActivity"
             android:label="@string/title_activity_lost_item" >
         </activity>
+        <activity
+            android:name=".uploadLostItem"
+            android:label="@string/title_activity_upload_lost_item" >
+        </activity>
     </application>
 
 </manifest>
