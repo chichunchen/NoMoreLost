@@ -1,8 +1,7 @@
 package com.project.android.nctu.nomorelost;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -11,7 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class LostItemDetailsActivity extends AppCompatActivity {
+public class LostItemDetailsActivity extends Activity {
 
     private final String TAG = "LostItemActivity";
     private JSONObject lostItem;

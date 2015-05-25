@@ -1,44 +1,80 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10dip"
+    android:background="@color/black_overlay"
     tools:context=".MainActivity">
 
-
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/showLostitems"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/lostitems"
-            android:onClick="lostItems" />
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
-        <Button
-            android:id="@+id/uploadListitem"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="50dp"
+                android:gravity="center"
+                android:text="@string/app_name"
+                android:layout_gravity="center" />
+
+        </FrameLayout>
+
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/findLostitem"
-            android:onClick="uploadLostItem" />
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:stretchColumns="*">
+
+            <TableRow android:layout_weight="1">
+                <Button
+                    android:id="@+id/showLostitems"
+                    style="@style/MenuButton"
+                    android:background="@drawable/upload_lostitem"
+                    android:onClick="lostItems" />
+
+                <Button
+                    android:id="@+id/uploadListitem"
+                    style="@style/MenuButton"
+                    android:background="@drawable/list_lostitems"
+                    android:onClick="uploadLostItem" />
+            </TableRow>
+
+            <TableRow android:layout_weight="1">
+                <TextView
+                    style="@style/IndexText"
+                    android:text="@string/lostitems" />
+
+                <TextView
+                    style="@style/IndexText"
+                    android:text="@string/findLostitem" />
+            </TableRow>
+
+            <TableRow android:layout_weight="1">
+                <Button
+                    android:id="@+id/settings"
+                    style="@style/MenuButton"
+                    android:layout_span="2"
+                    android:background="@drawable/settings"
+                    android:onClick="settings" />
+            </TableRow>
+
+            <TableRow android:layout_weight="1">
+                <TextView
+                    style="@style/IndexText"
+                    android:layout_span="2"
+                    android:text="@string/settings" />
+            </TableRow>
+        </TableLayout>
+
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-
-        <Button
-            android:id="@+id/btn_3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/contact_us" />
-    </LinearLayout>
-
-</LinearLayout>
+</FrameLayout>

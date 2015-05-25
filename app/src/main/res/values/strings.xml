@@ -2,6 +2,7 @@
     <!-- Settings -->
     <string name="app_name">NoMoreLost</string>
     <string name="action_settings">Settings</string>
+    <string name="settings">設定</string>
     <string name="title_activity_lost_items_list">LostitemsListActivity</string>
     <string name="title_activity_lost_item">LostItemActivity</string>
 
@@ -9,7 +10,18 @@
     <string name="lostitems">瀏覽遺失物</string>
     <string name="findLostitem">上傳遺失物</string>
     <string name="contact_us">聯絡我們</string>
-    <string name="title_activity_upload_lost_item">uploadLostItem</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_upload_lost_item">UploadLostItem</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <string name="other_info">其他資訊</string>
+    <string name="about">關於</string>
+    <string name="contact">連絡作者</string>
+    <string name="rating">評分</string>
+    <string name="get_source_code">取得原始碼</string>
+    <string name="provide_suggestion">提供想法或意見</string>
+    <string name="rating_for_app">為本應用程式評分</string>
+    <string name="about_description">本應用程式之簡介</string>
+    <string name="visit_site">拜訪作者網站</string>
+    <string name="site">網站</string>
 
 </resources>
