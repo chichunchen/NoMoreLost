@@ -23,7 +23,7 @@
         <TextView
             android:id="@+id/title"
             style="@style/ActionBarTitle"
-            android:text="" />
+            android:text="@string/searchLostitem" />
 
         <ImageView
             android:id="@+id/menu"

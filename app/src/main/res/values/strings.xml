@@ -9,6 +9,7 @@
     <!-- Main Activity -->
     <string name="lostitems">瀏覽遺失物</string>
     <string name="findLostitem">上傳遺失物</string>
+    <string name="searchLostitem">搜尋</string>
     <string name="contact_us">聯絡我們</string>
     <string name="title_activity_upload_lost_item">UploadLostItem</string>
     <string name="title_activity_settings">SettingsActivity</string>
