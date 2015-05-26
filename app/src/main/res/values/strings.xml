@@ -13,8 +13,12 @@
     <string name="title_activity_upload_lost_item">UploadLostItem</string>
     <string name="title_activity_settings">SettingsActivity</string>
 
+    <string name="back">返回</string>
+    <string name="refresh">重新整理</string>
     <string name="other_info">其他資訊</string>
+    <string name="choose_service">選擇開啟方式</string>
     <string name="about">關於</string>
+    <string name="about_app">關於此應用程式</string>
     <string name="contact">連絡作者</string>
     <string name="rating">評分</string>
     <string name="get_source_code">取得原始碼</string>
