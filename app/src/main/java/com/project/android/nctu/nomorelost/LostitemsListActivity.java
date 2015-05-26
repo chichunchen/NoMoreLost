@@ -21,6 +21,7 @@ import com.project.android.nctu.nomorelost.utils.ApiRequestClient;
 import com.project.android.nctu.nomorelost.utils.ToolsHelper;
 import com.yalantis.contextmenu.lib.ContextMenuDialogFragment;
 import com.yalantis.contextmenu.lib.MenuObject;
+import com.yalantis.contextmenu.lib.MenuParams;
 import com.yalantis.contextmenu.lib.interfaces.OnMenuItemClickListener;
 import com.yalantis.contextmenu.lib.interfaces.OnMenuItemLongClickListener;
 
@@ -56,9 +57,8 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
         setContentView(R.layout.lostitems_list_activity);
 
         mFragmentManager = getSupportFragmentManager();
-        mMenuDialogFragment = ContextMenuDialogFragment.newInstance((int) getResources()
-                                        .getDimension(R.dimen.tool_bar_height), getMenuObjects());
         initToolbar();
+        initMenuFragment();
 
         findView();
         getLostitemsList();
@@ -78,6 +78,14 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
         menuObjects.add(refresh);
 
         return menuObjects;
+    }
+
+    private void initMenuFragment() {
+        MenuParams menuParams = new MenuParams();
+        menuParams.setActionBarSize((int) getResources().getDimension(R.dimen.tool_bar_height));
+        menuParams.setMenuObjects(getMenuObjects());
+        menuParams.setClosableOutside(false);
+        mMenuDialogFragment = ContextMenuDialogFragment.newInstance(menuParams);
     }
 
     private void initToolbar() {
