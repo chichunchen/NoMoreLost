@@ -66,6 +66,11 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
 
     private List<MenuObject> getMenuObjects() {
         List<MenuObject> menuObjects = new ArrayList<>();
+
+        MenuObject close = new MenuObject();
+        close.setResource(R.drawable.ic_close_blue_36dp);
+        menuObjects.add(close);
+
         menuObjects.add(new MenuObject("生活及運動用品"));
         menuObjects.add(new MenuObject("衣物、手錶與配件"));
         menuObjects.add(new MenuObject("現金、證件、票卡"));
@@ -245,18 +250,33 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
 
     @Override
     public void onMenuItemClick(View view, int position) {
+        String[] lostitem_category = getResources().getStringArray(R.array.lostitem_category);
+
         switch (position) {
             case 0:
                 break;
             case 1:
-//                this.info(null);
+                mTitle.setText(lostitem_category[0]);
                 break;
             case 2:
-//                this.update(null);
+                mTitle.setText(lostitem_category[1]);
                 break;
             case 3:
+                mTitle.setText(lostitem_category[2]);
                 break;
             case 4:
+                mTitle.setText(lostitem_category[3]);
+                break;
+            case 5:
+                mTitle.setText(lostitem_category[4]);
+                break;
+            case 6:
+                mTitle.setText(lostitem_category[5]);
+                break;
+            case 7:
+                Intent refresh = new Intent(this, LostitemsListActivity.class);
+                startActivity(refresh);
+                this.finish();
                 break;
         }
     }
