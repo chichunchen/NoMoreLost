@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Yi Hau Chen\Desktop\NoMoreLost\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="eeebabdfd8203f6ab639ccea4ffa1f20e1adee3a">
+        <dex dex="C:\Users\Yi Hau Chen\Desktop\NoMoreLost\app\build\intermediates\pre-dexed\debug\classes-9a3e124dad831c5adbbfafc59a84fa28255e1acd.jar" />
+    </item>
+    <item
+        jar="C:\Users\Yi Hau Chen\Desktop\NoMoreLost\app\build\intermediates\exploded-aar\com.yalantis\contextmenu\1.0.4\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4812670dcffa70f6e3b2dc5f191837a2db7d4cd9">
+        <dex dex="C:\Users\Yi Hau Chen\Desktop\NoMoreLost\app\build\intermediates\pre-dexed\debug\classes-7b87a66c50ae5b860d609349983a6239c51ae293.jar" />
+    </item>
+    <item
+        jar="C:\Users\Yi Hau Chen\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="C:\Users\Yi Hau Chen\Desktop\NoMoreLost\app\build\intermediates\pre-dexed\debug\library-2.4.0-15ef7237a94f067ef22e131e1d5b0b5db92ea447.jar" />
+    </item>
+    <item
+        jar="C:\Users\Yi Hau Chen\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.1.0\support-annotations-22.1.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="281bc6c58ecb3644c23fbc5ee0452019f67b4d5d">
+        <dex dex="C:\Users\Yi Hau Chen\Desktop\NoMoreLost\app\build\intermediates\pre-dexed\debug\support-annotations-22.1.0-2c18ffda552c9d1f3a23f2f05a77e4d3ae83e082.jar" />
+    </item>
+    <item
+        jar="C:\Users\Yi Hau Chen\Desktop\NoMoreLost\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="983e2f375504bc04def18e709c35192afe92e65f">
+        <dex dex="C:\Users\Yi Hau Chen\Desktop\NoMoreLost\app\build\intermediates\pre-dexed\debug\classes-a88c81354438d5bbc4e3eae459c57249875ca7aa.jar" />
+    </item>
+    <item
+        jar="C:\Users\Yi Hau Chen\Desktop\NoMoreLost\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.0\libs\internal_impl-22.1.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="025cb89f2896c63200ff4c2e6c467a95691d880a">
+        <dex dex="C:\Users\Yi Hau Chen\Desktop\NoMoreLost\app\build\intermediates\pre-dexed\debug\internal_impl-22.1.0-c4d9acaa8ec04d5db387f129f03615b85b80e4c7.jar" />
+    </item>
+    <item
+        jar="C:\Users\Yi Hau Chen\.gradle\caches\modules-2\files-2.1\com.loopj.android\android-async-http\1.4.5\77bf7cacf9cefe19dc105e5425d2eb1bb5285881\android-async-http-1.4.5.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881">
+        <dex dex="C:\Users\Yi Hau Chen\Desktop\NoMoreLost\app\build\intermediates\pre-dexed\debug\android-async-http-1.4.5-2061dc0722215cc0f3e8295a67b14b6863ecc874.jar" />
+    </item>
+
+</items>

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="contextmenu-1.0.4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.yalantis/contextmenu/1.0.4/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.yalantis/contextmenu/1.0.4/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
