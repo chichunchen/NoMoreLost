@@ -80,3 +80,6 @@ proguard/
 
 ### Android Patch ###
 gen-external-apklibs
+
+### OSX ###
+.DS_Store
