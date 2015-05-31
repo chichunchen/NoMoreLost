@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dip"
-    tools:context=".LostItemActivity">
+    tools:context=".LostItemActivity"
+    android:weightSum="1">
 
 
     <LinearLayout
@@ -43,5 +44,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:layout_weight="0.73" />
 
 </LinearLayout>

@@ -1,11 +1,14 @@
 package com.project.android.nctu.nomorelost;
 
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,6 +20,12 @@ import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.project.android.nctu.nomorelost.utils.ApiRequestClient;
 import com.project.android.nctu.nomorelost.utils.ToolsHelper;
 import com.yalantis.contextmenu.lib.ContextMenuDialogFragment;
@@ -24,12 +33,27 @@ import com.yalantis.contextmenu.lib.MenuObject;
 import com.yalantis.contextmenu.lib.MenuParams;
 import com.yalantis.contextmenu.lib.interfaces.OnMenuItemClickListener;
 import com.yalantis.contextmenu.lib.interfaces.OnMenuItemLongClickListener;
-
+import android.widget.SimpleAdapter.ViewBinder;
 import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import android.os.Bundle;
+import android.os.Environment;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
+import android.view.Menu;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.SimpleAdapter.ViewBinder;
 
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -47,18 +71,25 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     private DialogFragment mMenuDialogFragment;
     private TextView mTitle;
     private SearchView mSearch;
-    private ImageView mMenu;
+    private ImageView mMenu,thumbImageView;
     private SimpleAdapter adapter;
     private TextView textViewCategory, textViewContact, textViewDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
+                this).threadPriority(Thread.NORM_PRIORITY - 2)
+                .denyCacheImageMultipleSizesInMemory()
+                .discCacheFileNameGenerator(new Md5FileNameGenerator())
+                .tasksProcessingOrder(QueueProcessingType.LIFO).build();
+        ImageLoader.getInstance().init(config);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lostitems_list_activity);
 
         mFragmentManager = getSupportFragmentManager();
         initToolbar();
         initMenuFragment();
+
 
         findView();
         getLostitemsList();
@@ -136,7 +167,24 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
             }
         }
     };
+    public static Bitmap convertStringToIcon(String st)
+    {
+        // OutputStream out;
+        Bitmap bitmap = null;
+        try
+        {
+            java.net.URL url = new java.net.URL(st);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            InputStream is = conn.getInputStream();
+            Bitmap mBitmap = BitmapFactory.decodeStream(is);
+            return mBitmap;
 
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
+    }
     private void getLostitemsList() {
         String url = "http://52.68.136.81:3000/api/lostitems";
 
@@ -162,8 +210,15 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
 
                         JSONObject category = lostitem.getJSONObject("category");
                         item.put("category", category.getString("name"));
-
                         item.put("created_at", lostitem.getString("created_at"));
+
+                        JSONObject picture = lostitem.getJSONObject("picture");
+                        JSONObject picture2 = picture.getJSONObject("picture");
+                        JSONObject thumb = picture2.getJSONObject("thumb");
+                        String temp = "http://img.hexun.com.tw/2011-06-01/130166523.jpg";
+                        Bitmap img = convertStringToIcon(temp);
+                        item.put("thumb",  img );
+                    //    item.put("picture", picture.getString("picture.url"));
 
                         list.add(item);
                     } catch (JSONException e) {
@@ -179,10 +234,30 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
         adapter = new SimpleAdapter(getApplicationContext(),
                                     list,
                                     R.layout.lostitems_row,
-                                    new String[]{"category", "description", "contact"},
-                                    new int[]{R.id.lostitem_category, R.id.textView_description, R.id.textView_contact});
+                                    new String[]{"category", "description", "contact","thumb"},
+                                    new int[]{R.id.lostitem_category, R.id.textView_description, R.id.textView_contact ,R.id.imageView}
+
+                                         );
+
+        adapter.setViewBinder(new ViewBinder() {
+            public boolean setViewValue(View view, Object data,
+                                        String textRepresentation) {
+
+                if (view instanceof ImageView && data instanceof Bitmap) {
+                    ImageView iv = (ImageView) view;
+                    iv.setImageBitmap((Bitmap) data);
+                    return true;
+                } else
+                    return false;
+            }
+        });
 
         mListView.setAdapter(adapter);
+
+        //    thumbImageView.setImageBitmap();
+        //    mListView.setAdapter(adapter);
+       // thumbImageView.setImageBitmap( convertStringToIcon(temp));
+
         mListView.setOnItemClickListener(itemClickListener);
     }
 
@@ -236,12 +311,26 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //mAdapter.notifyDataSetChanged();
     }
-
+    private class ViewHolder {
+       // public TextView text;
+        public ImageView image;
+    }
     private void findView() {
+        //final ViewHolder holder;
+        String imageUri = "http://52.68.136.81:3000/uploads/lostitem/picture/4/thumb_ArchLinux.png";
         mListView = (ListView)findViewById(R.id.lostitem_list);
-        textViewCategory = (TextView) findViewById(R.id.lostitem_category);
-        textViewContact = (TextView) findViewById(R.id.textView_contact);
-        textViewDescription = (TextView) findViewById(R.id.textView_description);
+      //  textViewCategory = (TextView) findViewById(R.id.lostitem_category);
+     //   textViewContact = (TextView) findViewById(R.id.textView_contact);
+    //    textViewDescription = (TextView) findViewById(R.id.textView_description);
+        thumbImageView = (ImageView) findViewById(R.id.imageView);
+        //view.setTag(holder);
+        DisplayImageOptions options = new DisplayImageOptions.Builder()
+              //  .showStubImage(R.drawable.stub)
+              //  .showImageForEmptyUri(R.drawable.empty)
+              //  .showImageOnFail(R.drawable.error).cacheInMemory()
+                .cacheOnDisc().displayer(new RoundedBitmapDisplayer(5)).build();
+      //  ImageLoader.displayImage(
+          //      imageUri   ,  thumbImageView, options);
     }
 
     public void back(View view) {
