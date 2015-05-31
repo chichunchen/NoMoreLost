@@ -32,7 +32,7 @@
             android:label="@string/title_activity_lost_item" >
         </activity>
         <activity
-            android:name=".UploadLostItem"
+            android:name=".UploadLostitem"
             android:label="@string/title_activity_upload_lost_item"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Base" >

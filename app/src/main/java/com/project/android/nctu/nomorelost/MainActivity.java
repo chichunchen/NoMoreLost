@@ -15,7 +15,9 @@ import com.project.android.nctu.nomorelost.utils.ToolsHelper;
 
 
 public class MainActivity extends Activity {
+
     ImageLoader imageLoader = ImageLoader.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         initImageLoader(getApplicationContext());
@@ -33,7 +35,7 @@ public class MainActivity extends Activity {
     }
 
     public void uploadLostItem(View view) {
-        Intent intent = new Intent(this, UploadLostItem.class);
+        Intent intent = new Intent(this, UploadLostitem.class);
         startActivity(intent);
     }
 
