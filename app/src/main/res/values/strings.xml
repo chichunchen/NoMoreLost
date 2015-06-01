@@ -29,4 +29,12 @@
     <string name="visit_site">拜訪作者網站</string>
     <string name="site">網站</string>
 
+    <!-- Upload_Lost_Item -->
+    <string name="upload_picture">上傳照片</string>
+    <string name="kind">種類: </string>
+    <string name="cat">選擇一個種類</string>
+    <string name="description">描述:</string>
+    <string name="phone_number">手機:</string>
+    <string name="email">電子郵件:</string>
+
 </resources>
