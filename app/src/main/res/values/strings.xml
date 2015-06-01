@@ -36,5 +36,6 @@
     <string name="description">描述:</string>
     <string name="phone_number">手機:</string>
     <string name="email">電子郵件:</string>
+    <string name="choose_image_source">請選擇拍照程式</string>
 
 </resources>
