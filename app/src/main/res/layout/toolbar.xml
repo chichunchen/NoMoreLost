@@ -27,13 +27,13 @@
 
         <ImageView
             android:id="@+id/menu"
-            android:src="@drawable/ic_menu_white_36dp"
             style="?attr/actionButtonStyle"
-
-            android:layout_centerVertical="true"
             android:layout_width="wrap_content"
+
             android:layout_height="match_parent"
-            android:layout_alignParentRight="true" />
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_menu_white_36dp" />
 
     </RelativeLayout>
 

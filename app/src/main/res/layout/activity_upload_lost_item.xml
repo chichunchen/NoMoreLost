@@ -1,5 +1,4 @@
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollView"
     android:layout_width="fill_parent"
@@ -27,7 +26,7 @@
                 android:id="@+id/uploadListitem"
                 style="@style/MenuButton"
                 android:background="@drawable/upload_lostitem"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/text"
@@ -85,16 +84,16 @@
                     android:id="@+id/checkcard"
                     android:layout_width="168dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:text="現金證件"
+                    android:textColor="@color/black"
                     android:textSize="24sp" />
 
                 <CheckBox
                     android:id="@+id/checkbooks"
                     android:layout_width="168dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:text="圖書文具"
+                    android:textColor="@color/black"
                     android:textSize="24sp" />
             </LinearLayout>
 
@@ -107,16 +106,16 @@
                     android:id="@+id/check3c"
                     android:layout_width="168dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:text="3C週邊"
+                    android:textColor="@color/black"
                     android:textSize="24sp" />
 
                 <CheckBox
                     android:id="@+id/checkelse"
                     android:layout_width="168dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:text="其他"
+                    android:textColor="@color/black"
                     android:textSize="24sp" />
             </LinearLayout>
         </LinearLayout>
@@ -132,8 +131,8 @@
                 android:id="@+id/textView_description"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textColor="@color/black"
                 android:text="description:"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <EditText
@@ -153,8 +152,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textColor="@color/black"
                 android:text="phone number:"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <EditText
@@ -174,8 +173,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textColor="@color/black"
                 android:text="email:"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <EditText

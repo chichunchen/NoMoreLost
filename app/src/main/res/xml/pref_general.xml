@@ -3,18 +3,18 @@
     <PreferenceCategory android:title="@string/other_info" />
 
     <Preference
-        android:title="@string/about"
         android:key="about"
-        android:summary="@string/about_description"/>
+        android:summary="@string/about_description"
+        android:title="@string/about" />
 
     <Preference
-        android:title="@string/site"
         android:key="visit"
-        android:summary="@string/visit_site" />
+        android:summary="@string/visit_site"
+        android:title="@string/site" />
 
     <Preference
-        android:title="@string/rating"
         android:key="rating"
-        android:summary="@string/rating_for_app" />
+        android:summary="@string/rating_for_app"
+        android:title="@string/rating" />
 
 </PreferenceScreen>

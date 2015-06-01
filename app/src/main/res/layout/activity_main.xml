@@ -19,22 +19,23 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="50dp"
+                android:layout_gravity="center"
                 android:gravity="center"
                 android:text="@string/app_name"
-                android:layout_gravity="center" />
+                android:textColor="@color/white"
+                android:textSize="50dp"
+                android:textStyle="bold" />
 
         </FrameLayout>
 
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:stretchColumns="*"
-            android:layout_weight="0.23">
+            android:layout_weight="0.23"
+            android:stretchColumns="*">
 
             <TableRow android:layout_weight="1">
+
                 <Button
                     android:id="@+id/showLostitems"
                     style="@style/MenuButton"
@@ -49,6 +50,7 @@
             </TableRow>
 
             <TableRow android:layout_weight="1">
+
                 <TextView
                     style="@style/IndexText"
                     android:text="@string/lostitems" />
@@ -59,6 +61,7 @@
             </TableRow>
 
             <TableRow android:layout_weight="1">
+
                 <Button
                     android:id="@+id/settings"
                     style="@style/MenuButton"
@@ -68,6 +71,7 @@
             </TableRow>
 
             <TableRow android:layout_weight="1">
+
                 <TextView
                     style="@style/IndexText"
                     android:layout_span="2"

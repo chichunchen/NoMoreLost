@@ -36,25 +36,24 @@ public class LostItemDetailsActivity extends Activity {
 
         Bundle bundle = this.getIntent().getExtras();
 
-
         try {
             lostItem = new JSONObject(bundle.getString("lostitem"));
 //            Log.d(TAG, "category: " + lostItem.getString("category"));
 
             JSONObject picture = lostItem.getJSONObject("picture");
             JSONObject picture2 = picture.getJSONObject("picture");
-           // JSONObject thumb = picture2.getJSONObject("url");
-           String temp = "http://img.hexun.com.tw/2011-06-01/130166523.jpg";
+            // JSONObject thumb = picture2.getJSONObject("url");
+            String temp = "http://img.hexun.com.tw/2011-06-01/130166523.jpg";
 
             Bitmap img = convertStringToIcon(temp);
-           // item.put("thumb",  img );
-           // String st = lostItem.getString("")
+            // item.put("thumb",  img );
+            // String st = lostItem.getString("")
             textViewMail.setText(lostItem.getString("mail"));
             textViewContact.setText(lostItem.getString("contact"));
             textViewDescription.setText(lostItem.getString("description"));
-           // imageView.setImageBitmap(img);
-           // String randomString = String.format("?random=%d", System.currentTimeMillis());
-            String imageUri = "http://52.68.136.81:3000/"+picture2.getString("url");
+            // imageView.setImageBitmap(img);
+            // String randomString = String.format("?random=%d", System.currentTimeMillis());
+            String imageUri = "http://52.68.136.81:3000/" + picture2.getString("url");
             imageLoader.displayImage(imageUri, imageView);
 
         } catch (JSONException e) {
@@ -91,21 +90,18 @@ public class LostItemDetailsActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
-    public static Bitmap convertStringToIcon(String st)
-    {
+
+    public static Bitmap convertStringToIcon(String st) {
         // OutputStream out;
         Bitmap bitmap = null;
-        try
-        {
+        try {
             java.net.URL url = new java.net.URL(st);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             InputStream is = conn.getInputStream();
             Bitmap mBitmap = BitmapFactory.decodeStream(is);
             return mBitmap;
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             return null;
         }
     }

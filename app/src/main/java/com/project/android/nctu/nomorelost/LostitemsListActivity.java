@@ -33,11 +33,14 @@ import com.yalantis.contextmenu.lib.MenuObject;
 import com.yalantis.contextmenu.lib.MenuParams;
 import com.yalantis.contextmenu.lib.interfaces.OnMenuItemClickListener;
 import com.yalantis.contextmenu.lib.interfaces.OnMenuItemLongClickListener;
+
 import android.widget.SimpleAdapter.ViewBinder;
+
 import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import android.os.Bundle;
 import android.os.Environment;
 import android.app.Activity;
@@ -71,7 +74,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     private DialogFragment mMenuDialogFragment;
     private TextView mTitle;
     private SearchView mSearch;
-    private ImageView mMenu,thumbImageView;
+    private ImageView mMenu, thumbImageView;
     private SimpleAdapter adapter;
     private TextView textViewCategory, textViewContact, textViewDescription;
 
@@ -128,9 +131,9 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mTitle =  (TextView)findViewById(R.id.title);
+        mTitle = (TextView) findViewById(R.id.title);
 
-        mMenu = (ImageView)findViewById(R.id.menu);
+        mMenu = (ImageView) findViewById(R.id.menu);
         mMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,7 +141,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
             }
         });
 
-        mSearch = (SearchView)findViewById(R.id.search);
+        mSearch = (SearchView) findViewById(R.id.search);
         mSearch.addOnLayoutChangeListener(searchExpandHandler);
         mSearch.setOnQueryTextListener(this);
         mSearch.setOnCloseListener(new SearchView.OnCloseListener() {
@@ -159,32 +162,30 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
         @Override
         public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight,
                                    int oldBottom) {
-            SearchView searchView = (SearchView)v;
-            if (searchView.isIconfiedByDefault() && !searchView.isIconified())            {
+            SearchView searchView = (SearchView) v;
+            if (searchView.isIconfiedByDefault() && !searchView.isIconified()) {
                 // search got expanded from icon to search box, hide tabs to make space
                 mTitle.setVisibility(View.GONE);
                 mMenu.setVisibility(View.GONE);
             }
         }
     };
-    public static Bitmap convertStringToIcon(String st)
-    {
+
+    public static Bitmap convertStringToIcon(String st) {
         // OutputStream out;
         Bitmap bitmap = null;
-        try
-        {
+        try {
             java.net.URL url = new java.net.URL(st);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             InputStream is = conn.getInputStream();
             Bitmap mBitmap = BitmapFactory.decodeStream(is);
             return mBitmap;
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             return null;
         }
     }
+
     private void getLostitemsList() {
         String url = "http://52.68.136.81:3000/api/lostitems";
 
@@ -217,8 +218,8 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
                         JSONObject thumb = picture2.getJSONObject("thumb");
                         String temp = "http://img.hexun.com.tw/2011-06-01/130166523.jpg";
                         Bitmap img = convertStringToIcon(temp);
-                        item.put("thumb",  img );
-                    //    item.put("picture", picture.getString("picture.url"));
+                        item.put("thumb", img);
+                        //    item.put("picture", picture.getString("picture.url"));
 
                         list.add(item);
                     } catch (JSONException e) {
@@ -232,12 +233,12 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
 
     private void setSimpleAdapter() {
         adapter = new SimpleAdapter(getApplicationContext(),
-                                    list,
-                                    R.layout.lostitems_row,
-                                    new String[]{"category", "description", "contact","thumb"},
-                                    new int[]{R.id.lostitem_category, R.id.textView_description, R.id.textView_contact ,R.id.imageView}
+                list,
+                R.layout.lostitems_row,
+                new String[]{"category", "description", "contact", "thumb"},
+                new int[]{R.id.lostitem_category, R.id.textView_description, R.id.textView_contact, R.id.imageView}
 
-                                         );
+        );
 
         adapter.setViewBinder(new ViewBinder() {
             public boolean setViewValue(View view, Object data,
@@ -256,7 +257,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
 
         //    thumbImageView.setImageBitmap();
         //    mListView.setAdapter(adapter);
-       // thumbImageView.setImageBitmap( convertStringToIcon(temp));
+        // thumbImageView.setImageBitmap( convertStringToIcon(temp));
 
         mListView.setOnItemClickListener(itemClickListener);
     }
@@ -286,7 +287,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     public void onWindowFocusChanged(boolean focus) {
         super.onWindowFocusChanged(focus);
         // ContentView has loaded
-        if(!isInitialized){
+        if (!isInitialized) {
             isInitialized = true;
             initUI();
             update(null);
@@ -298,7 +299,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     }
 
     public void update(View view) {
-        if(!ToolsHelper.isNetworkAvailable(this)) {
+        if (!ToolsHelper.isNetworkAvailable(this)) {
             ToolsHelper.showNetworkErrorMessage(this);
             finish();
         } else {
@@ -311,26 +312,28 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //mAdapter.notifyDataSetChanged();
     }
+
     private class ViewHolder {
-       // public TextView text;
+        // public TextView text;
         public ImageView image;
     }
+
     private void findView() {
         //final ViewHolder holder;
         String imageUri = "http://52.68.136.81:3000/uploads/lostitem/picture/4/thumb_ArchLinux.png";
-        mListView = (ListView)findViewById(R.id.lostitem_list);
-      //  textViewCategory = (TextView) findViewById(R.id.lostitem_category);
-     //   textViewContact = (TextView) findViewById(R.id.textView_contact);
-    //    textViewDescription = (TextView) findViewById(R.id.textView_description);
+        mListView = (ListView) findViewById(R.id.lostitem_list);
+        //  textViewCategory = (TextView) findViewById(R.id.lostitem_category);
+        //   textViewContact = (TextView) findViewById(R.id.textView_contact);
+        //    textViewDescription = (TextView) findViewById(R.id.textView_description);
         thumbImageView = (ImageView) findViewById(R.id.imageView);
         //view.setTag(holder);
         DisplayImageOptions options = new DisplayImageOptions.Builder()
-              //  .showStubImage(R.drawable.stub)
-              //  .showImageForEmptyUri(R.drawable.empty)
-              //  .showImageOnFail(R.drawable.error).cacheInMemory()
+                //  .showStubImage(R.drawable.stub)
+                //  .showImageForEmptyUri(R.drawable.empty)
+                //  .showImageOnFail(R.drawable.error).cacheInMemory()
                 .cacheOnDisc().displayer(new RoundedBitmapDisplayer(5)).build();
-      //  ImageLoader.displayImage(
-          //      imageUri   ,  thumbImageView, options);
+        //  ImageLoader.displayImage(
+        //      imageUri   ,  thumbImageView, options);
     }
 
     public void back(View view) {

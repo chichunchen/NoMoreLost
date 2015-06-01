@@ -21,7 +21,7 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
     private static final String HOMEPAGE = "http://github.com/chichunchen";
     private static final String SOURCE_CODE = "https://github.com/chichunchen/nomorelost";
     private static final String PLAY_STORE = "http://play.google.com/store/apps/";
-    private static final ArrayList<String> PREFERENCE_ITEM = new ArrayList<String>(){{
+    private static final ArrayList<String> PREFERENCE_ITEM = new ArrayList<String>() {{
         add(0, "about");
         add(1, "rating");
         add(2, "visit");
@@ -59,14 +59,14 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
     }
 
     private void initPreference() {
-        for(int i = 0 ; i < PREFERENCE_ITEM.size() ; i ++){
+        for (int i = 0; i < PREFERENCE_ITEM.size(); i++) {
             Preference preference = (Preference) findPreference(PREFERENCE_ITEM.get(i));
             preference.setOnPreferenceClickListener(clickPref(i, getActivity()));
         }
     }
 
-    private Preference.OnPreferenceClickListener clickPref(final int key, final Context context){
-        return new Preference.OnPreferenceClickListener(){
+    private Preference.OnPreferenceClickListener clickPref(final int key, final Context context) {
+        return new Preference.OnPreferenceClickListener() {
             public boolean onPreferenceClick(Preference preference) {
                 switch (key) {
                     case 0:

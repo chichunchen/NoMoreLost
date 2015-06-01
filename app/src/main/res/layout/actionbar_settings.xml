@@ -7,15 +7,16 @@
     <RelativeLayout
         android:layout_width="50dp"
         android:layout_height="match_parent"
-        android:background="@drawable/press_effect_with_alpha"
         android:layout_alignParentLeft="true"
+        android:background="@drawable/press_effect_with_alpha"
         android:onClick="back">
+
         <ImageView
             style="@style/ActionBarImage"
-            android:src="@drawable/ic_action_back"/>
+            android:src="@drawable/ic_action_back" />
     </RelativeLayout>
 
     <TextView
         style="@style/ActionBarTitle"
-        android:text="@string/settings"/>
+        android:text="@string/settings" />
 </RelativeLayout>
