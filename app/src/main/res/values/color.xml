@@ -7,6 +7,8 @@
     <color name="highlight">#fffff466</color>
     <color name="odd_row">#EAF2F4</color>
     <color name="light_grey">#ffeaeaea</color>
-    <color name="light_blue">#ff09b4bc</color>
+    <color name="light_blue">#ff11a2bc</color>
 
+    <!-- Upload_Lost_Item -->
+    <color name="lost_bule">#FF11A2BC</color>
 </resources>

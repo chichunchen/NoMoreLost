@@ -31,7 +31,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30sp"
-                android:text="upload picture"
+                android:text="@string/upload_picture"
+                android:textColor="@color/lost_bule"
                 android:layout_gravity="center"
                 android:id="@+id/text" />
         </LinearLayout >
@@ -46,70 +47,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
-                android:text="kind:"
+                android:text="@string/kind"
+                android:textColor="@color/lost_bule"
                 android:id="@+id/title"
                 />
 
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <Spinner
+                android:id="@+id/spinner01"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
-                <CheckBox
-                    android:layout_width="168dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    android:text="生活用品"
-                    android:id="@+id/checkdailyuse" />
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/cat"
 
-                <CheckBox
-                    android:layout_width="168dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    android:text="衣物配件"
-                    android:id="@+id/checkclothes" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <CheckBox
-                    android:layout_width="168dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    android:text="現金證件"
-                    android:id="@+id/checkcard"
-                    />
-                <CheckBox
-                    android:layout_width="168dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    android:text="圖書文具"
-                    android:id="@+id/checkbooks"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <CheckBox
-                    android:layout_width="168dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    android:text="3C週邊"
-                    android:id="@+id/check3c"
-                    />
-                <CheckBox
-                    android:layout_width="168dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    android:text="其他"
-                    android:id="@+id/checkelse"
-                    />
-            </LinearLayout>
-        </LinearLayout>
+            android:layout_marginTop="20sp"
+
+            />
+         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -119,7 +72,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="description:"
+                android:text="@string/description"
+                android:textColor="@color/lost_bule"
                 android:textSize="24sp"
                 android:id="@+id/textView_description" />
             <EditText
@@ -138,7 +92,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="phone number:"
+                android:text="@string/phone_number"
+                android:textColor="@color/lost_bule"
                 android:textSize="24sp" />
             <EditText
                 android:layout_width="fill_parent"
@@ -155,7 +110,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="email:"
+                android:text="@string/email"
+                android:textColor="@color/lost_bule"
                 android:textSize="24sp" />
             <EditText
                 android:layout_width="fill_parent"
