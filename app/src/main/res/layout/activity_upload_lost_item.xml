@@ -1,100 +1,105 @@
 <ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollView"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/light_blue"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:background="@color/light_blue"
     tools:context="com.project.android.nctu.nomorelost.UploadLostItem$PlaceholderFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_margin="10dp"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:orientation="vertical">
+
             <Button
                 android:id="@+id/uploadListitem"
                 style="@style/MenuButton"
                 android:background="@drawable/upload_lostitem" />
 
             <TextView
+                android:id="@+id/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
+                android:layout_gravity="center"
                 android:text="@string/upload_picture"
                 android:textColor="@color/lost_bule"
-                android:layout_gravity="center"
-                android:id="@+id/text" />
-        </LinearLayout >
+                android:textSize="30sp" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             android:layout_margin="10dp"
+            android:background="@color/white"
             android:orientation="vertical">
+
             <TextView
+                android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
                 android:text="@string/kind"
                 android:textColor="@color/lost_bule"
-                android:id="@+id/title"
-                />
+                android:textSize="24sp" />
 
             <Spinner
                 android:id="@+id/spinner01"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:drawSelectorOnTop="true"
-                android:prompt="@string/cat"
-
                 android:layout_marginTop="20sp"
+                android:drawSelectorOnTop="true"
+
+                android:prompt="@string/cat"
 
                 />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_margin="10dp"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:orientation="vertical">
+
             <TextView
+                android:id="@+id/textView_description"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/description"
                 android:textColor="@color/lost_bule"
-                android:textSize="24sp"
-                android:id="@+id/textView_description" />
+                android:textSize="24sp" />
+
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
-                />
+                android:textSize="24sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_margin="10dp"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/phone_number"
                 android:textColor="@color/lost_bule"
                 android:textSize="24sp" />
+
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -104,15 +109,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_margin="10dp"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/email"
                 android:textColor="@color/lost_bule"
                 android:textSize="24sp" />
+
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
