@@ -7,17 +7,31 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+import com.project.android.nctu.nomorelost.utils.ApiRequestClient;
 import com.project.android.nctu.nomorelost.utils.GetImageThumbnail;
+
+import org.apache.http.Header;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -26,12 +40,16 @@ public class UploadLostitem extends AppCompatActivity {
 
     private Spinner categorySpinner;
     private ImageView imageView;
+    private EditText uploadDescription;
+    private EditText uploadMail;
+    private EditText uploadContact;
 
     private static String root = null;
     private static String imageFolderPath = null;
     private String imageName = null;
     private static Uri fileUri = null;
     private static final int CAMERA_IMAGE_REQUEST = 1;
+    private static final String Tag = "UploadLostitem";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +57,14 @@ public class UploadLostitem extends AppCompatActivity {
         setContentView(R.layout.activity_upload_lost_item);
 
         findView();
+    }
+
+    private void findView() {
+        categorySpinner = (Spinner) findViewById(R.id.spinner01);
+        imageView = (ImageView) findViewById(R.id.capturedImageview);
+        uploadContact = (EditText) findViewById(R.id.upload_contact);
+        uploadDescription = (EditText) findViewById(R.id.upload_description);
+        uploadMail = (EditText) findViewById(R.id.upload_mail);
 
         //設定功能表項目陣列，使用createFromResource()
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.lostitem_category,
@@ -51,18 +77,13 @@ public class UploadLostitem extends AppCompatActivity {
         categorySpinner.setAdapter(adapter);
     }
 
-    private void findView() {
-        categorySpinner = (Spinner) findViewById(R.id.spinner01);
-        imageView = (ImageView) findViewById(R.id.capturedImageview);
-    }
-
     public void captureImage(View view) {
         // fetching the root directory
         root = Environment.getExternalStorageDirectory().toString()
                 + "/Pictures";
 
         // Creating folders for Image
-        imageFolderPath = root + "/NoMoreLost";
+        imageFolderPath = root + "/" + getString(R.string.app_name);
         File imagesFolder = new File(imageFolderPath);
         imagesFolder.mkdirs();
 
@@ -85,7 +106,6 @@ public class UploadLostitem extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // TODO Auto-generated method stub
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK) {
@@ -119,16 +139,45 @@ public class UploadLostitem extends AppCompatActivity {
         }
     }
 
-    public void showFullImage(View view) {
-        String path = (String) view.getTag();
+    private void postLostitem() throws UnsupportedEncodingException {
+        String url = "http://52.68.136.81:3000/api/lostitems";
 
-        if (path != null) {
+        String contact = uploadContact.getText().toString();
+        String mail = uploadMail.getText().toString();
+        String description = uploadDescription.getText().toString();
+        // TODO upload category
+        String category = "1";
+        File myFile = new File(imageFolderPath + imageName);
 
-            Intent intent = new Intent();
-            intent.setAction(Intent.ACTION_VIEW);
-            Uri imgUri = Uri.parse("file://" + path);
-            intent.setDataAndType(imgUri, "image/*");
-            startActivity(intent);
+        RequestParams params = new RequestParams();
+        params.put("lostitem[contact]", contact);
+        params.put("lostitem[mail]", mail);
+        params.put("lostitem[description]", description);
+        params.put("lostitem[category_id]", category);
+        try {
+            params.put("lostitem[picture]", myFile);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
+
+        ApiRequestClient.post(url, params, new AsyncHttpResponseHandler() {
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                // Successfully got a response
+                Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable
+                    error) {
+                // Response failed :(
+                Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT);
+            }
+        });
+    }
+
+    public void submit(View view) throws UnsupportedEncodingException {
+        postLostitem();
     }
 }
