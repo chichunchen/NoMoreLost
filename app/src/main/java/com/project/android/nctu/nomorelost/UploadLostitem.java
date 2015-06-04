@@ -142,12 +142,14 @@ public class UploadLostitem extends AppCompatActivity {
     private void postLostitem() throws UnsupportedEncodingException {
         String url = "http://52.68.136.81:3000/api/lostitems";
 
+        // get informaiton
         String contact = uploadContact.getText().toString();
         String mail = uploadMail.getText().toString();
         String description = uploadDescription.getText().toString();
         // TODO upload category
         String category = "1";
-        File myFile = new File(imageFolderPath + imageName);
+        File myFile = new File(imageFolderPath, imageName);
+        Log.e(Tag, imageFolderPath + imageName);
 
         RequestParams params = new RequestParams();
         params.put("lostitem[contact]", contact);
@@ -165,14 +167,17 @@ public class UploadLostitem extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 // Successfully got a response
-                Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(), getString(R.string.uploadSuccess), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), LostitemsListActivity.class);
+
+                startActivity(intent);
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable
                     error) {
                 // Response failed :(
-                Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(), getString(R.string.uploadFailed), Toast.LENGTH_SHORT).show();
             }
         });
     }
