@@ -9,24 +9,19 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
-import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.project.android.nctu.nomorelost.utils.ApiRequestClient;
 import com.project.android.nctu.nomorelost.utils.GetImageThumbnail;
 
 import org.apache.http.Header;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -39,6 +34,7 @@ import java.util.Calendar;
 public class UploadLostitem extends AppCompatActivity {
 
     private Spinner categorySpinner;
+    private String category;
     private ImageView imageView;
     private EditText uploadDescription;
     private EditText uploadMail;
@@ -60,7 +56,7 @@ public class UploadLostitem extends AppCompatActivity {
     }
 
     private void findView() {
-        categorySpinner = (Spinner) findViewById(R.id.spinner01);
+        categorySpinner = (Spinner) findViewById(R.id.categorySpinner);
         imageView = (ImageView) findViewById(R.id.capturedImageview);
         uploadContact = (EditText) findViewById(R.id.upload_contact);
         uploadDescription = (EditText) findViewById(R.id.upload_description);
@@ -70,10 +66,17 @@ public class UploadLostitem extends AppCompatActivity {
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.lostitem_category,
                 android.R.layout.simple_spinner_item);
 
-        //設定選單
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                category = String.valueOf(pos + 1);
+                Toast.makeText(getApplicationContext(), category, Toast.LENGTH_SHORT).show();
+            }
 
-        //設定adapter
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(adapter);
     }
 
@@ -146,8 +149,7 @@ public class UploadLostitem extends AppCompatActivity {
         String contact = uploadContact.getText().toString();
         String mail = uploadMail.getText().toString();
         String description = uploadDescription.getText().toString();
-        // TODO upload category
-        String category = "1";
+
         File myFile = new File(imageFolderPath, imageName);
         Log.e(Tag, imageFolderPath + imageName);
 
