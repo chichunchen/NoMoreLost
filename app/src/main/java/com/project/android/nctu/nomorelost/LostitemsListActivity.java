@@ -105,12 +105,30 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
         close.setResource(R.drawable.ic_close_blue_36dp);
         menuObjects.add(close);
 
-        menuObjects.add(new MenuObject("生活及運動用品"));
-        menuObjects.add(new MenuObject("衣物、手錶與配件"));
-        menuObjects.add(new MenuObject("現金、證件、票卡"));
-        menuObjects.add(new MenuObject("圖書文具"));
-        menuObjects.add(new MenuObject("3C"));
-        menuObjects.add(new MenuObject("鑰匙、其他"));
+        MenuObject sport = new MenuObject("生活及運動用品");
+        sport.setResource(R.drawable.ic_sport_blue);
+        menuObjects.add(sport);
+
+        MenuObject shirt = new MenuObject("衣物、手錶與配件");
+        sport.setResource(R.drawable.ic_shirt_blue);
+        menuObjects.add(shirt);
+
+        MenuObject money = new MenuObject("現金、證件、票卡");
+        money.setResource(R.drawable.ic_money_blue);
+        menuObjects.add(money);
+
+        MenuObject stationery = new MenuObject("圖書文具");
+        stationery.setResource(R.drawable.ic_pen_blue);
+        menuObjects.add(stationery);
+
+
+        MenuObject threec = new MenuObject("3C");
+        threec.setResource(R.drawable.ic_usb_blue2);
+        menuObjects.add(threec);
+
+        MenuObject other = new MenuObject("鑰匙、其他");
+        other.setResource(R.drawable.ic_umbrella2_blue);
+        menuObjects.add(other);
 
         MenuObject refresh = new MenuObject();
         refresh.setResource(R.drawable.ic_refresh_blue_36dp);
