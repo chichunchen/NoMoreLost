@@ -110,7 +110,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
         menuObjects.add(sport);
 
         MenuObject shirt = new MenuObject("衣物、手錶與配件");
-        sport.setResource(R.drawable.ic_shirt_blue);
+        shirt.setResource(R.drawable.ic_shirt_blue);
         menuObjects.add(shirt);
 
         MenuObject money = new MenuObject("現金、證件、票卡");
@@ -123,7 +123,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
 
 
         MenuObject threec = new MenuObject("3C");
-        threec.setResource(R.drawable.ic_usb_blue2);
+        threec.setResource(R.drawable.ic_usb2_blue);
         menuObjects.add(threec);
 
         MenuObject other = new MenuObject("鑰匙、其他");
