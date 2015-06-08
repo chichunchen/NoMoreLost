@@ -26,7 +26,7 @@ import java.net.HttpURLConnection;
 
 public class LostItemDetailsActivity extends Activity {
 
-    private final String TAG = "LostItemActivity";
+    private final String TAG = "LostItemDetailsActivity";
     Bundle bundle;
     private JSONObject lostItem;
 
@@ -93,10 +93,8 @@ public class LostItemDetailsActivity extends Activity {
     private void getData() {
         try {
             lostItem = new JSONObject(bundle.getString("lostitem"));
+            // picture = lostItem.getJSONObject("picture").getJSONObject("picture");
             picture = lostItem.getJSONObject("picture").getJSONObject("picture").getJSONObject("medium");
-
-            String temp = "http://img.hexun.com.tw/2011-06-01/130166523.jpg";
-            Bitmap img = convertStringToIcon(temp);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -130,20 +128,6 @@ public class LostItemDetailsActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public static Bitmap convertStringToIcon(String st) {
-        // OutputStream out;
-        Bitmap bitmap = null;
-        try {
-            java.net.URL url = new java.net.URL(st);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            InputStream is = conn.getInputStream();
-            Bitmap mBitmap = BitmapFactory.decodeStream(is);
-            return mBitmap;
-        } catch (Exception e) {
-            return null;
-        }
     }
 
     public void call(View view) {
