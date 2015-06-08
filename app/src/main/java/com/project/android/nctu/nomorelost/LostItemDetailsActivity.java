@@ -1,14 +1,17 @@
 package com.project.android.nctu.nomorelost;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -66,7 +69,7 @@ public class LostItemDetailsActivity extends Activity {
         textViewMail = (TextView) findViewById(R.id.textView_mail);
         textViewContact = (TextView) findViewById(R.id.textView_contact);
         textViewDescription = (TextView) findViewById(R.id.textView_description);
-        imageView = (ImageView) findViewById(R.id.imageView2);
+        imageView = (ImageView) findViewById(R.id.lostitem_image);
     }
 
     @Override
@@ -103,6 +106,19 @@ public class LostItemDetailsActivity extends Activity {
 
         } catch (Exception e) {
             return null;
+        }
+    }
+
+    public void call(View view) {
+        try {
+            String number = textViewContact.getText().toString();
+            Intent phoneIntent = new Intent(Intent.ACTION_CALL);
+            phoneIntent.setData(Uri.parse("tel:"+ number));
+            startActivity(phoneIntent);
+
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(getApplicationContext(),
+                    "Call failed, please try again later!", Toast.LENGTH_SHORT).show();
         }
     }
 }

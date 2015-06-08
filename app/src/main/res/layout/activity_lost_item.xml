@@ -31,6 +31,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Call"
+            android:id="@+id/button_callPhone"
+            android:onClick="call"/>
     </LinearLayout>
 
     <LinearLayout
@@ -46,7 +52,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/lostitem_image"
         android:layout_width="344dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.73" />

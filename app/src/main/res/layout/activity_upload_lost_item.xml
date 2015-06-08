@@ -115,6 +115,7 @@
                 android:id="@+id/upload_contact"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:inputType="phone"
                 android:textColor="@color/black_overlay"
                 android:textSize="24sp" />
         </LinearLayout>
@@ -137,6 +138,7 @@
                 android:id="@+id/upload_mail"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
                 android:textColor="@color/black_overlay"
                 android:textSize="24sp" />
         </LinearLayout>

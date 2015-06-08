@@ -237,7 +237,6 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
                 R.layout.lostitems_row,
                 new String[]{"category", "description", "contact", "thumb"},
                 new int[]{R.id.lostitem_category, R.id.textView_description, R.id.textView_contact, R.id.imageView}
-
         );
 
         adapter.setViewBinder(new ViewBinder() {
