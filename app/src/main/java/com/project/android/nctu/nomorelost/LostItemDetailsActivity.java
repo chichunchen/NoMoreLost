@@ -1,10 +1,12 @@
 package com.project.android.nctu.nomorelost;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,47 +27,83 @@ import java.net.HttpURLConnection;
 public class LostItemDetailsActivity extends Activity {
 
     private final String TAG = "LostItemActivity";
+    Bundle bundle;
     private JSONObject lostItem;
+
+    private ProgressDialog progress;
     private TextView textViewMail, textViewContact, textViewDescription;
     private ImageView imageView;
+    JSONObject picture;
+    ImageLoader imageLoader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ImageLoader imageLoader = ImageLoader.getInstance();
         setContentView(R.layout.activity_lost_item);
 
+        bundle = this.getIntent().getExtras();
         findView();
 
-        Bundle bundle = this.getIntent().getExtras();
+        new LoadData().execute();
+    }
 
+    private class LoadData extends AsyncTask<String, Integer, Integer> {
+        @Override
+        protected Integer doInBackground(String... param) {
+            getData();
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progress = ProgressDialog.show(LostItemDetailsActivity.this, "擷取檔案", "下載圖片檔案，請稍候...", true);
+
+            try {
+                lostItem = new JSONObject(bundle.getString("lostitem"));
+                textViewMail.setText(lostItem.getString("mail"));
+                textViewContact.setText(lostItem.getString("contact"));
+                textViewDescription.setText(lostItem.getString("description"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(Integer result) {
+            super.onPostExecute(result);
+
+            try {
+                String imageUri = "http://52.68.136.81:3000/" + picture.getString("url");
+                imageLoader.displayImage(imageUri, imageView);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            // All work is done.
+            progress.dismiss();
+        }
+    }
+
+    private void getData() {
         try {
             lostItem = new JSONObject(bundle.getString("lostitem"));
-//            Log.d(TAG, "category: " + lostItem.getString("category"));
+            picture = lostItem.getJSONObject("picture").getJSONObject("picture").getJSONObject("medium");
 
-            JSONObject picture = lostItem.getJSONObject("picture");
-            JSONObject picture2 = picture.getJSONObject("picture");
-            // JSONObject thumb = picture2.getJSONObject("url");
             String temp = "http://img.hexun.com.tw/2011-06-01/130166523.jpg";
-
             Bitmap img = convertStringToIcon(temp);
-            // item.put("thumb",  img );
-            // String st = lostItem.getString("")
-            textViewMail.setText(lostItem.getString("mail"));
-            textViewContact.setText(lostItem.getString("contact"));
-            textViewDescription.setText(lostItem.getString("description"));
-            // imageView.setImageBitmap(img);
-            // String randomString = String.format("?random=%d", System.currentTimeMillis());
-            String imageUri = "http://52.68.136.81:3000/" + picture2.getString("url");
-            imageLoader.displayImage(imageUri, imageView);
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
     }
 
     private void findView() {
+        imageLoader = ImageLoader.getInstance();
         textViewMail = (TextView) findViewById(R.id.textView_mail);
         textViewContact = (TextView) findViewById(R.id.textView_contact);
         textViewDescription = (TextView) findViewById(R.id.textView_description);
@@ -103,7 +141,6 @@ public class LostItemDetailsActivity extends Activity {
             InputStream is = conn.getInputStream();
             Bitmap mBitmap = BitmapFactory.decodeStream(is);
             return mBitmap;
-
         } catch (Exception e) {
             return null;
         }
@@ -113,7 +150,7 @@ public class LostItemDetailsActivity extends Activity {
         try {
             String number = textViewContact.getText().toString();
             Intent phoneIntent = new Intent(Intent.ACTION_CALL);
-            phoneIntent.setData(Uri.parse("tel:"+ number));
+            phoneIntent.setData(Uri.parse("tel:" + number));
             startActivity(phoneIntent);
 
         } catch (android.content.ActivityNotFoundException ex) {
