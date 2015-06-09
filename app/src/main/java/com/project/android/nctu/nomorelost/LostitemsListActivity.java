@@ -78,6 +78,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     private SimpleAdapter adapter;
     private TextView textViewCategory, textViewContact, textViewDescription;
     int setting=0;
+    int pos[];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -218,6 +219,9 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
             public void onSuccess(int statusCode, Header[] headers, JSONArray lostitemsList) {
                 lostitems = lostitemsList;
                 String use_to_set;
+               // int pos[];
+                pos = new int[lostitems.length()];
+                int set_for_list=0;
                 for (int i = 0; i < lostitems.length(); i++) {
                     try {
                         JSONObject lostitem = (JSONObject) lostitems.get(i);
@@ -227,13 +231,13 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
                         item.put("mail", lostitem.getString("mail"));
                         item.put("contact", lostitem.getString("contact"));
                         item.put("description", lostitem.getString("description"));
+                        item.put("created_at", lostitem.getString("created_at"));
+
 
                         JSONObject category = lostitem.getJSONObject("category");
-                        use_to_set = category.getString("name");
+                        item.put("category", category.getString("name"));
 
-                        item.put("category", use_to_set);
 
-                        item.put("created_at", lostitem.getString("created_at"));
 
                         JSONObject picture = lostitem.getJSONObject("picture");
                         JSONObject picture2 = picture.getJSONObject("picture");
@@ -243,39 +247,61 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
 
                         item.put("thumb", img);
                         //    item.put("picture", picture.getString("picture.url"));
-                       switch (setting){
-                           case 0 :
-                               list.add(item);
+                       // if(i >= 1){
+                        switch (setting) {
+                            case 0:
+                                pos[set_for_list] = i;
+                                set_for_list++;
+                                list.add(item);
 
-                               break;
-                           case 1 :
+                                break;
+                            case 1:
 
-                               if( category.getString("id") =="1" ){
-                                   list.add(item);}
-                               break;
-                           case 2 :
-                               if( category.getString("id") =="2" ){
-                                   list.add(item);}
-                               break;
-                           case 3 :
-                               if( category.getString("id") =="3" ){
-                                   list.add(item);}
-                               break;
-                           case 4 :
-                               if( category.getString("id") =="4" ){
-                                   list.add(item);}
-                               break;
-                           case 5 :
-                               if( category.getString("id") =="5" ){
-                                   list.add(item);}
-                               break;
-                           case 6 :
-                               if( category.getString("id") =="6" ){
-                                   list.add(item);}
-                               break;
+                                if (category.getString("id").equals("1")) {
+                                    pos[set_for_list] = i;
+                                    set_for_list++;
+                                    list.add(item);
+                                }
+                                break;
+                            case 2:
+                                if (category.getString("id").equals("2")) {
+                                    pos[set_for_list] = i;
+                                    set_for_list++;
+                                    list.add(item);
+                                }
+                                break;
+                            case 3:
+                                if (category.getString("id").equals("3")) {
+                                    pos[set_for_list] = i;
+                                    set_for_list++;
+                                    list.add(item);
+                                }
+                                break;
+                            case 4:
+                                if (category.getString("id").equals("4")) {
+                                    pos[set_for_list] = i;
+                                    set_for_list++;
+                                    list.add(item);
+                                }
+                                break;
+                            case 5:
+                                if (category.getString("id").equals("5")) {
+                                    pos[set_for_list] = i;
+                                    set_for_list++;
+                                    list.add(item);
+                                }
+                                break;
+                            case 6:
+                                if (category.getString("id").equals("6")) {
+                                    pos[set_for_list] = i;
+                                    set_for_list++;
+                                    list.add(item);
+                                }
+                                break;
 
-                       }
-                      //  list.add(item);
+                        }
+                       //}
+                       // else  list.add(item);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -320,7 +346,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             try {
-                JSONObject lostitem = (JSONObject) lostitems.get(position);
+                JSONObject lostitem = (JSONObject) lostitems.get(pos[position]);
                 Log.e(TAG, "lostitem: " + lostitem);
                 Intent intent = new Intent();
                 intent.setClass(getApplicationContext(), LostItemDetailsActivity.class);
@@ -405,7 +431,6 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
                 setting = 1;
                 list.clear();
                 getLostitemsList();
-
                 break;
             case 2:
                 mTitle.setText(lostitem_category[1]);
