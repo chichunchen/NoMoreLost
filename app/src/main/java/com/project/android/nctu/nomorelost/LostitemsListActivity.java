@@ -78,6 +78,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     private SimpleAdapter adapter;
     private TextView textViewCategory, textViewContact, textViewDescription;
     int setting=0;
+    int pos[];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -218,6 +219,9 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
             public void onSuccess(int statusCode, Header[] headers, JSONArray lostitemsList) {
                 lostitems = lostitemsList;
                 String use_to_set;
+               // int pos[];
+                pos = new int[lostitems.length()];
+                int set_for_list=0;
                 for (int i = 0; i < lostitems.length(); i++) {
                     try {
                         JSONObject lostitem = (JSONObject) lostitems.get(i);
@@ -245,32 +249,46 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
                         //    item.put("picture", picture.getString("picture.url"));
                        switch (setting){
                            case 0 :
+                               pos[set_for_list]=i;
+                               set_for_list++;
                                list.add(item);
 
                                break;
                            case 1 :
 
                                if( category.getString("id") =="1" ){
+                                   pos[set_for_list]=i;
+                                   set_for_list++;
                                    list.add(item);}
                                break;
                            case 2 :
                                if( category.getString("id") =="2" ){
+                                   pos[set_for_list]=i;
+                                   set_for_list++;
                                    list.add(item);}
                                break;
                            case 3 :
                                if( category.getString("id") =="3" ){
+                                   pos[set_for_list]=i;
+                                   set_for_list++;
                                    list.add(item);}
                                break;
                            case 4 :
                                if( category.getString("id") =="4" ){
+                                   pos[set_for_list]=i;
+                                   set_for_list++;
                                    list.add(item);}
                                break;
                            case 5 :
                                if( category.getString("id") =="5" ){
+                                   pos[set_for_list]=i;
+                                   set_for_list++;
                                    list.add(item);}
                                break;
                            case 6 :
                                if( category.getString("id") =="6" ){
+                                   pos[set_for_list]=i;
+                                   set_for_list++;
                                    list.add(item);}
                                break;
 
@@ -320,7 +338,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             try {
-                JSONObject lostitem = (JSONObject) lostitems.get(position);
+                JSONObject lostitem = (JSONObject) lostitems.get(pos[position]);
                 Log.e(TAG, "lostitem: " + lostitem);
                 Intent intent = new Intent();
                 intent.setClass(getApplicationContext(), LostItemDetailsActivity.class);
