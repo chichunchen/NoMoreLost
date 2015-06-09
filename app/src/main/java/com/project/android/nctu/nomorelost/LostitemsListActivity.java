@@ -77,6 +77,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     private ImageView mMenu, thumbImageView;
     private SimpleAdapter adapter;
     private TextView textViewCategory, textViewContact, textViewDescription;
+    int setting=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -216,7 +217,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray lostitemsList) {
                 lostitems = lostitemsList;
-
+                String use_to_set;
                 for (int i = 0; i < lostitems.length(); i++) {
                     try {
                         JSONObject lostitem = (JSONObject) lostitems.get(i);
@@ -228,7 +229,10 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
                         item.put("description", lostitem.getString("description"));
 
                         JSONObject category = lostitem.getJSONObject("category");
-                        item.put("category", category.getString("name"));
+                        use_to_set = category.getString("name");
+
+                        item.put("category", use_to_set);
+
                         item.put("created_at", lostitem.getString("created_at"));
 
                         JSONObject picture = lostitem.getJSONObject("picture");
@@ -236,10 +240,42 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
                         JSONObject thumb = picture2.getJSONObject("thumb");
                         String temp = "http://img.hexun.com.tw/2011-06-01/130166523.jpg";
                         Bitmap img = convertStringToIcon(temp);
+
                         item.put("thumb", img);
                         //    item.put("picture", picture.getString("picture.url"));
+                       switch (setting){
+                           case 0 :
+                               list.add(item);
 
-                        list.add(item);
+                               break;
+                           case 1 :
+
+                               if( category.getString("id") =="1" ){
+                                   list.add(item);}
+                               break;
+                           case 2 :
+                               if( category.getString("id") =="2" ){
+                                   list.add(item);}
+                               break;
+                           case 3 :
+                               if( category.getString("id") =="3" ){
+                                   list.add(item);}
+                               break;
+                           case 4 :
+                               if( category.getString("id") =="4" ){
+                                   list.add(item);}
+                               break;
+                           case 5 :
+                               if( category.getString("id") =="5" ){
+                                   list.add(item);}
+                               break;
+                           case 6 :
+                               if( category.getString("id") =="6" ){
+                                   list.add(item);}
+                               break;
+
+                       }
+                      //  list.add(item);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -360,30 +396,56 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     @Override
     public void onMenuItemClick(View view, int position) {
         String[] lostitem_category = getResources().getStringArray(R.array.lostitem_category);
-
+        Intent refresh = new Intent(this, LostitemsListActivity.class);
         switch (position) {
             case 0:
                 break;
             case 1:
                 mTitle.setText(lostitem_category[0]);
+                setting = 1;
+                list.clear();
+                getLostitemsList();
+
                 break;
             case 2:
                 mTitle.setText(lostitem_category[1]);
+
+                setting = 2;
+                list.clear();
+                getLostitemsList();
                 break;
             case 3:
                 mTitle.setText(lostitem_category[2]);
+
+                setting = 3;
+                list.clear();
+                getLostitemsList();
                 break;
             case 4:
                 mTitle.setText(lostitem_category[3]);
+
+                setting = 4;
+                list.clear();
+                getLostitemsList();
                 break;
             case 5:
                 mTitle.setText(lostitem_category[4]);
+
+                setting = 5;
+                list.clear();
+                getLostitemsList();
                 break;
             case 6:
                 mTitle.setText(lostitem_category[5]);
+
+                setting = 6;
+
+                list.clear();
+                getLostitemsList();
                 break;
             case 7:
-                Intent refresh = new Intent(this, LostitemsListActivity.class);
+                setting = 0;
+                //Intent refresh = new Intent(this, LostitemsListActivity.class);
                 startActivity(refresh);
                 this.finish();
                 break;
