@@ -12,44 +12,31 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@color/white"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/uploadListitem"
-                style="@style/MenuButton"
-                android:background="@drawable/upload_lostitem"
-                android:onClick="captureImage" />
-
-            <TextView
-                android:id="@+id/text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/upload_picture"
-                android:textColor="@color/lost_bule"
-                android:textSize="30sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
             <ImageView
                 android:id="@+id/capturedImageview"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:background="@drawable/default_thumbnail" />
         </LinearLayout>
-
+        <Button
+            android:layout_margin="10dp"
+            android:id="@+id/upload_lostitem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/upload_picture"
+            android:textColor="@color/lost_bule"
+            android:textSize="30sp"
+            android:background="@color/white"
+            android:onClick="captureImage"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
