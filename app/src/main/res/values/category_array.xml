@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="lostitem_category">
-        <item>生活及運動用品</item>
-        <item>衣物、手錶與配件</item>
-        <item>現金、證件、票卡</item>
+        <item>生活用品</item>
+        <item>衣物配件</item>
+        <item>現金證件</item>
         <item>圖書文具</item>
-        <item>3C</item>
-        <item>鑰匙、其他</item>
+        <item>３Ｃ周邊</item>
+        <item>其他</item>
+
     </string-array>
 </resources>

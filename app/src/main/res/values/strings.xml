@@ -18,6 +18,7 @@
     <string name="upload_picture">上傳照片</string>
     <string name="kind">種類: </string>
     <string name="cat">選擇一個種類</string>
+    <string name="item_title">標題:</string>
     <string name="description">描述:</string>
     <string name="phone_number">手機:</string>
     <string name="email">電子郵件:</string>

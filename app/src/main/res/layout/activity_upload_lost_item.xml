@@ -3,7 +3,7 @@
     android:id="@+id/scrollView"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/light_blue"
+    android:background="@drawable/index_background"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -33,10 +33,34 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/upload_picture"
-            android:textColor="@color/lost_bule"
+            android:textColor="@color/logo_dark_green"
             android:textSize="30sp"
             android:background="@color/white"
             android:onClick="captureImage"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/logo_brown"
+            android:orientation="horizontal">
+            <!--暫時以棕色為背景 要改spinner的字體顏色-->
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/kind"
+                android:textColor="@color/logo_dark_green"
+                android:textSize="24sp" />
+
+            <Spinner
+                android:id="@+id/categorySpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/cat" />
+        </LinearLayout>
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,21 +69,22 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/textView_title"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/kind"
-                android:textColor="@color/lost_bule"
+                android:layout_height="match_parent"
+                android:text="@string/item_title"
+                android:textColor="@color/logo_dark_green"
                 android:textSize="24sp" />
 
-            <Spinner
-                android:id="@+id/categorySpinner"
+            <EditText
+                android:id="@+id/upload_item_title"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20sp"
-                android:drawSelectorOnTop="true"
-                android:prompt="@string/cat" />
+                android:textColor="@color/black_overlay"
+                android:textSize="24sp" />
         </LinearLayout>
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -73,7 +98,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/description"
-                android:textColor="@color/lost_bule"
+                android:textColor="@color/logo_dark_green"
                 android:textSize="24sp" />
 
             <EditText
@@ -95,7 +120,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/phone_number"
-                android:textColor="@color/lost_bule"
+                android:textColor="@color/logo_dark_green"
                 android:textSize="24sp" />
 
             <EditText
@@ -118,7 +143,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/email"
-                android:textColor="@color/lost_bule"
+                android:textColor="@color/logo_dark_green"
                 android:textSize="24sp" />
 
             <EditText
@@ -141,7 +166,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="submit"
-                android:text="Submit" />
+                android:background="@color/white"
+                android:text="Submit"
+                android:textColor="@color/logo_dark_green" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

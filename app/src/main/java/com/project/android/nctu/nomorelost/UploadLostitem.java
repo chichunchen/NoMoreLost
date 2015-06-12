@@ -36,6 +36,7 @@ public class UploadLostitem extends AppCompatActivity {
     private Spinner categorySpinner;
     private String category;
     private ImageView imageView;
+    private EditText uploadItemtitle;
     private EditText uploadDescription;
     private EditText uploadMail;
     private EditText uploadContact;
@@ -58,6 +59,7 @@ public class UploadLostitem extends AppCompatActivity {
     private void findView() {
         categorySpinner = (Spinner) findViewById(R.id.categorySpinner);
         imageView = (ImageView) findViewById(R.id.capturedImageview);
+        uploadItemtitle = (EditText) findViewById(R.id.upload_item_title);
         uploadContact = (EditText) findViewById(R.id.upload_contact);
         uploadDescription = (EditText) findViewById(R.id.upload_description);
         uploadMail = (EditText) findViewById(R.id.upload_mail);
@@ -149,6 +151,7 @@ public class UploadLostitem extends AppCompatActivity {
         String contact = uploadContact.getText().toString();
         String mail = uploadMail.getText().toString();
         String description = uploadDescription.getText().toString();
+        String item_title = uploadItemtitle.getText().toString();
 
         File myFile = new File(imageFolderPath, imageName);
         Log.e(Tag, imageFolderPath + imageName);
@@ -157,6 +160,7 @@ public class UploadLostitem extends AppCompatActivity {
         params.put("lostitem[contact]", contact);
         params.put("lostitem[mail]", mail);
         params.put("lostitem[description]", description);
+        params.put("lostitem[item_title]", item_title);
         params.put("lostitem[category_id]", category);
         try {
             params.put("lostitem[picture]", myFile);
