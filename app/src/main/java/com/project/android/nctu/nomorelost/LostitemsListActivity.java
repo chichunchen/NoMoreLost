@@ -400,6 +400,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
         //final ViewHolder holder;
         String imageUri = "http://52.68.136.81:3000/uploads/lostitem/picture/4/thumb_ArchLinux.png";
         mListView = (ListView) findViewById(R.id.lostitem_list);
+        mListView.setEmptyView(findViewById(R.id.no_item_msg));
         //  textViewCategory = (TextView) findViewById(R.id.lostitem_category);
         //   textViewContact = (TextView) findViewById(R.id.textView_contact);
         //    textViewDescription = (TextView) findViewById(R.id.textView_description);

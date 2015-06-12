@@ -14,6 +14,9 @@
     <string name="title_activity_upload_lost_item">UploadLostItem</string>
     <string name="title_activity_settings">SettingsActivity</string>
 
+    <!-- List Activity-->
+    <string name="no_item_yet">這個分類還沒有人上傳遺失物喔</string>
+
     <!-- Upload_Lost_Item -->
     <string name="upload_picture">上傳照片</string>
     <string name="kind">種類: </string>
