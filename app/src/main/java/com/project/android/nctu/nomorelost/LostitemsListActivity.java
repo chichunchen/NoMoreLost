@@ -1,6 +1,7 @@
 package com.project.android.nctu.nomorelost;
 
 
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.app.DialogFragment;
@@ -61,6 +62,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     private ImageView mMenu, thumbImageView;
     private LostitemListAdapter adapter;
     private TextView textViewCategory, textViewContact, textViewDescription;
+    private ProgressDialog progress;
     int setting = 0;
     int pos[];
 
@@ -193,10 +195,12 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     private void getLostitemsList() {
         String url = "http://52.68.136.81:3000/api/lostitems";
 
+        progress = ProgressDialog.show(LostitemsListActivity.this, "下載資料", "下載遺失物列表中，請稍待片刻...", true);
         ApiRequestClient.get(url, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 /** If the response is JSONObject instead of expected JSONArray */
+                progress.dismiss();
             }
 
             @Override
@@ -290,6 +294,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
                     }
                 }
                 setSimpleAdapter();
+                progress.dismiss();
             }
         });
     }
