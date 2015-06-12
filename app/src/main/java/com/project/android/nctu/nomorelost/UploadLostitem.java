@@ -1,5 +1,6 @@
 package com.project.android.nctu.nomorelost;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -40,6 +41,7 @@ public class UploadLostitem extends AppCompatActivity {
     private EditText uploadDescription;
     private EditText uploadMail;
     private EditText uploadContact;
+    private ProgressDialog progress;
 
     private static String root = null;
     private static String imageFolderPath = null;
@@ -167,8 +169,9 @@ public class UploadLostitem extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        ApiRequestClient.post(url, params, new AsyncHttpResponseHandler() {
+        progress = ProgressDialog.show(UploadLostitem.this, "上傳資料", "上傳遺失物資料中，請稍待片刻...", true);
 
+        ApiRequestClient.post(url, params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 // Successfully got a response
@@ -176,6 +179,7 @@ public class UploadLostitem extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), LostitemsListActivity.class);
 
                 startActivity(intent);
+                progress.dismiss();
             }
 
             @Override
@@ -183,6 +187,7 @@ public class UploadLostitem extends AppCompatActivity {
                     error) {
                 // Response failed :(
                 Toast.makeText(getApplicationContext(), getString(R.string.uploadFailed), Toast.LENGTH_SHORT).show();
+                progress.dismiss();
             }
         });
     }
