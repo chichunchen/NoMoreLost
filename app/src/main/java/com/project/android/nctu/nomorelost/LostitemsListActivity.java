@@ -77,7 +77,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     private ImageView mMenu, thumbImageView;
     private SimpleAdapter adapter;
     private TextView textViewCategory, textViewContact, textViewDescription;
-    int setting=0;
+    int setting = 0;
     int pos[];
 
     @Override
@@ -219,9 +219,9 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
             public void onSuccess(int statusCode, Header[] headers, JSONArray lostitemsList) {
                 lostitems = lostitemsList;
                 String use_to_set;
-               // int pos[];
+                // int pos[];
                 pos = new int[lostitems.length()];
-                int set_for_list=0;
+                int set_for_list = 0;
                 for (int i = 0; i < lostitems.length(); i++) {
                     try {
                         JSONObject lostitem = (JSONObject) lostitems.get(i);
@@ -238,7 +238,6 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
                         item.put("category", category.getString("name"));
 
 
-
                         JSONObject picture = lostitem.getJSONObject("picture");
                         JSONObject picture2 = picture.getJSONObject("picture");
                         JSONObject thumb = picture2.getJSONObject("thumb");
@@ -247,7 +246,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
 
                         item.put("thumb", img);
                         //    item.put("picture", picture.getString("picture.url"));
-                       // if(i >= 1){
+                        // if(i >= 1){
                         switch (setting) {
                             case 0:
                                 pos[set_for_list] = i;
@@ -300,8 +299,8 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
                                 break;
 
                         }
-                       //}
-                       // else  list.add(item);
+                        //}
+                        // else  list.add(item);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

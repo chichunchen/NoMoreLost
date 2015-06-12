@@ -48,6 +48,8 @@ public class UploadLostitem extends AppCompatActivity {
     private static final int CAMERA_IMAGE_REQUEST = 1;
     private static final String Tag = "UploadLostitem";
 
+    private RequestParams params;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,12 +67,12 @@ public class UploadLostitem extends AppCompatActivity {
         uploadMail = (EditText) findViewById(R.id.upload_mail);
 
         //設定功能表項目陣列，使用createFromResource()
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.lostitem_category,R.layout.spinner_text);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.lostitem_category, R.layout.spinner_text);
 
         categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 category = String.valueOf(pos + 1);
-                Toast.makeText(getApplicationContext(), category, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), category, Toast.LENGTH_SHORT).show();
             }
 
             public void onNothingSelected(AdapterView<?> parent) {
@@ -120,12 +122,10 @@ public class UploadLostitem extends AppCompatActivity {
                     try {
                         GetImageThumbnail getImageThumbnail = new GetImageThumbnail();
                         bitmap = getImageThumbnail.getThumbnail(fileUri, this);
-                    } catch (FileNotFoundException e1) {
-                        // TODO Auto-generated catch block
-                        e1.printStackTrace();
-                    } catch (IOException e1) {
-                        // TODO Auto-generated catch block
-                        e1.printStackTrace();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
 
                     // Setting image image icon on the imageview
@@ -155,7 +155,7 @@ public class UploadLostitem extends AppCompatActivity {
         File myFile = new File(imageFolderPath, imageName);
         Log.e(Tag, imageFolderPath + imageName);
 
-        RequestParams params = new RequestParams();
+        params = new RequestParams();
         params.put("lostitem[contact]", contact);
         params.put("lostitem[mail]", mail);
         params.put("lostitem[description]", description);
@@ -187,7 +187,21 @@ public class UploadLostitem extends AppCompatActivity {
         });
     }
 
+    private boolean checkInput() {
+        if (uploadContact.getText().length() == 0 ||
+                uploadMail.getText().length() == 0 ||
+                uploadDescription.getText().length() == 0 ||
+                uploadItemtitle.getText().length() == 0) {
+            return false;
+        }
+        return true;
+    }
+
     public void submit(View view) throws UnsupportedEncodingException {
-        postLostitem();
+        if (checkInput())
+            postLostitem();
+        else {
+            Toast.makeText(getApplicationContext(), getString(R.string.uploadFailed), Toast.LENGTH_SHORT).show();
+        }
     }
 }

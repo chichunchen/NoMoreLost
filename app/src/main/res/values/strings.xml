@@ -24,7 +24,7 @@
     <string name="email">電子郵件:</string>
     <string name="choose_image_source">請選擇拍照程式</string>
     <string name="uploadSuccess">上傳成功，感謝您的愛心。</string>
-    <string name="uploadFailed">請檢查您上傳的資料是否正確。</string>
+    <string name="uploadFailed">請檢查您是否有表格漏填，或是上傳的資料格式是否正確。</string>
 
     <!-- Setting Activity-->
     <string name="back">返回</string>
