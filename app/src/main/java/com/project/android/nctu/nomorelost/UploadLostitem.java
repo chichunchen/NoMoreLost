@@ -65,8 +65,7 @@ public class UploadLostitem extends AppCompatActivity {
         uploadMail = (EditText) findViewById(R.id.upload_mail);
 
         //設定功能表項目陣列，使用createFromResource()
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.lostitem_category,
-                android.R.layout.simple_spinner_item);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.lostitem_category,R.layout.spinner_text);
 
         categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
@@ -78,7 +77,7 @@ public class UploadLostitem extends AppCompatActivity {
             }
         });
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.spinner_text);
         categorySpinner.setAdapter(adapter);
     }
 
