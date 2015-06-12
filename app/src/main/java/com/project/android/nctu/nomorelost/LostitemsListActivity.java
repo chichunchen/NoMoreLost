@@ -8,14 +8,12 @@ import android.support.v4.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 
@@ -41,22 +39,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.os.Bundle;
-import android.os.Environment;
-import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Log;
-import android.view.Menu;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.SimpleAdapter.ViewBinder;
-
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -75,7 +59,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     private TextView mTitle;
     private SearchView mSearch;
     private ImageView mMenu, thumbImageView;
-    private SimpleAdapter adapter;
+    private LostitemListAdapter adapter;
     private TextView textViewCategory, textViewContact, textViewDescription;
     int setting = 0;
     int pos[];
@@ -311,7 +295,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     }
 
     private void setSimpleAdapter() {
-        adapter = new SimpleAdapter(getApplicationContext(),
+        adapter = new LostitemListAdapter(getApplicationContext(),
                 list,
                 R.layout.lostitems_row,
                 new String[]{"category", "description", "contact", "thumb"},
