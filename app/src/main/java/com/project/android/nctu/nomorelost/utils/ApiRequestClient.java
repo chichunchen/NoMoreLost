@@ -1,5 +1,7 @@
 package com.project.android.nctu.nomorelost.utils;
 
+import android.content.Context;
+
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -14,13 +16,15 @@ public class ApiRequestClient {
 
     // request function
     public static void get(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
-        //	      client.get(getAbsoluteUrl(url), params, responseHandler);
         client.get(url, params, responseHandler);
     }
 
     public static void post(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
-//        client.post(getAbsoluteUrl(url), params, responseHandler);
         client.post(url, params, responseHandler);
+    }
+
+    public static void delete(Context context, String url, AsyncHttpResponseHandler responseHandler) {
+        client.delete(context, url, responseHandler);
     }
 
     private static String getAbsoluteUrl(String relativeUrl) {

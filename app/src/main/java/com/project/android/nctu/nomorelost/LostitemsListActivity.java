@@ -1,7 +1,9 @@
 package com.project.android.nctu.nomorelost;
 
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.app.DialogFragment;
@@ -12,12 +14,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 
+import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -34,6 +38,7 @@ import com.yalantis.contextmenu.lib.interfaces.OnMenuItemClickListener;
 import com.yalantis.contextmenu.lib.interfaces.OnMenuItemLongClickListener;
 
 import android.widget.SimpleAdapter.ViewBinder;
+import android.widget.Toast;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
@@ -61,6 +66,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     private SearchView mSearch;
     private ImageView mMenu, thumbImageView;
     private LostitemListAdapter adapter;
+    AlertDialog.Builder alert;
     private TextView textViewCategory, textViewContact, textViewDescription;
     private ProgressDialog progress;
     int setting = 0;
@@ -216,15 +222,14 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
 
                         HashMap<String, Object> item = new HashMap<String, Object>();
 
+                        item.put("id", lostitem.getString("id"));
                         item.put("mail", lostitem.getString("mail"));
                         item.put("contact", lostitem.getString("contact"));
                         item.put("description", lostitem.getString("description"));
                         item.put("created_at", lostitem.getString("created_at"));
 
-
                         JSONObject category = lostitem.getJSONObject("category");
                         item.put("category", category.getString("name"));
-
 
                         JSONObject picture = lostitem.getJSONObject("picture");
                         JSONObject picture2 = picture.getJSONObject("picture");
@@ -327,6 +332,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
         // thumbImageView.setImageBitmap( convertStringToIcon(temp));
 
         mListView.setOnItemClickListener(itemClickListener);
+        mListView.setOnItemLongClickListener(itemLongClickListener);
     }
 
     private AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
@@ -347,6 +353,59 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+        }
+    };
+
+    private AdapterView.OnItemLongClickListener itemLongClickListener = new AdapterView.OnItemLongClickListener() {
+
+        @Override
+        public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+            // find item id
+            HashMap<String, Object> item = new HashMap<String, Object>();
+            item = list.get(position);
+            String item_id = item.get("id").toString();
+            final String del_url = "http://52.68.136.81:3000/api/lostitems/" + item_id;
+
+            // define alert
+            alert = new AlertDialog.Builder(LostitemsListActivity.this);
+            alert.setTitle("請輸入驗證碼");
+            alert.setMessage("驗證碼：");
+            // Set an EditText view to get user input
+            final EditText input = new EditText(LostitemsListActivity.this);
+            alert.setView(input);
+            alert.setPositiveButton("確定", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    // delete the item
+                    String confirm = input.getText().toString();
+                    String url = del_url + "?lostitem[confirm]=" + confirm;
+
+                    ApiRequestClient.delete(getApplicationContext(), url, new AsyncHttpResponseHandler() {
+                        @Override
+                        public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                            // Successfully got a response
+                            Toast.makeText(getApplicationContext(), "已成功刪除！", Toast.LENGTH_LONG).show();
+                        }
+
+                        @Override
+                        public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable
+                                error) {
+                            // Response failed :(
+                            Toast.makeText(getApplicationContext(), "請再次檢驗您的驗證碼是否正確。", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                    Intent refresh = new Intent(LostitemsListActivity.this, LostitemsListActivity.class);
+                    startActivity(refresh);
+                }
+            });
+            alert.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    // Canceled.
+                }
+            });
+            alert.show();
+
+            Toast.makeText(getApplicationContext(), item_id, Toast.LENGTH_SHORT).show();
+            return false;
         }
     };
 
