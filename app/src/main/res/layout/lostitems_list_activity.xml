@@ -12,4 +12,26 @@
         android:id="@+id/lostitem_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></ListView>
+
+    <LinearLayout
+        android:id="@+id/no_item_msg"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/light_grey"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/no_item_yet"
+            android:textColor="@color/black_overlay"
+            android:textSize="@dimen/title_text_size" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/not_found" />
+    </LinearLayout>
+
 </LinearLayout>

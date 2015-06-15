@@ -3,7 +3,7 @@
     android:id="@+id/scrollView"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/light_blue"
+    android:background="@drawable/index_background"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -12,67 +12,79 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@color/white"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/uploadListitem"
-                style="@style/MenuButton"
-                android:background="@drawable/upload_lostitem"
-                android:onClick="captureImage" />
-
-            <TextView
-                android:id="@+id/text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/upload_picture"
-                android:textColor="@color/lost_bule"
-                android:textSize="30sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
             <ImageView
                 android:id="@+id/capturedImageview"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:background="@drawable/default_thumbnail" />
         </LinearLayout>
-
+        <Button
+            android:layout_margin="10dp"
+            android:id="@+id/upload_lostitem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/upload_picture"
+            android:textColor="@color/logo_dark_green"
+            android:textSize="30sp"
+            android:background="@color/white"
+            android:onClick="captureImage"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="@color/white"
-            android:orientation="vertical">
-
+            android:background="@color/logo_brown"
+            android:orientation="horizontal">
+            <!--暫時以棕色為背景 要改spinner的字體顏色-->
             <TextView
                 android:id="@+id/title"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/kind"
-                android:textColor="@color/lost_bule"
+                android:textColor="@color/logo_dark_green"
                 android:textSize="24sp" />
 
             <Spinner
                 android:id="@+id/categorySpinner"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20sp"
                 android:drawSelectorOnTop="true"
                 android:prompt="@string/cat" />
         </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/item_title"
+                android:textColor="@color/logo_dark_green"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/upload_item_title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_overlay"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -86,7 +98,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/description"
-                android:textColor="@color/lost_bule"
+                android:textColor="@color/logo_dark_green"
                 android:textSize="24sp" />
 
             <EditText
@@ -108,7 +120,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/phone_number"
-                android:textColor="@color/lost_bule"
+                android:textColor="@color/logo_dark_green"
                 android:textSize="24sp" />
 
             <EditText
@@ -131,7 +143,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/email"
-                android:textColor="@color/lost_bule"
+                android:textColor="@color/logo_dark_green"
                 android:textSize="24sp" />
 
             <EditText
@@ -154,7 +166,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="submit"
-                android:text="Submit" />
+                android:background="@color/white"
+                android:text="Submit"
+                android:textColor="@color/logo_dark_green" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

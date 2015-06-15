@@ -57,7 +57,7 @@ public class LostItemDetailsActivity extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progress = ProgressDialog.show(LostItemDetailsActivity.this, "擷取檔案", "下載圖片檔案，請稍候...", true);
+            progress = ProgressDialog.show(LostItemDetailsActivity.this, "下載檔案", "圖片檔案可能稍大，正在下載中，請稍候...", true);
 
             try {
                 lostItem = new JSONObject(bundle.getString("lostitem"));

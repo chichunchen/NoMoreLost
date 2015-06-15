@@ -1,6 +1,7 @@
 package com.project.android.nctu.nomorelost;
 
 
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.app.DialogFragment;
@@ -8,14 +9,12 @@ import android.support.v4.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 
@@ -41,22 +40,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.os.Bundle;
-import android.os.Environment;
-import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Log;
-import android.view.Menu;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.SimpleAdapter.ViewBinder;
-
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -75,9 +60,10 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     private TextView mTitle;
     private SearchView mSearch;
     private ImageView mMenu, thumbImageView;
-    private SimpleAdapter adapter;
+    private LostitemListAdapter adapter;
     private TextView textViewCategory, textViewContact, textViewDescription;
-    int setting=0;
+    private ProgressDialog progress;
+    int setting = 0;
     int pos[];
 
     @Override
@@ -107,15 +93,15 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
         close.setResource(R.drawable.ic_close_blue_36dp);
         menuObjects.add(close);
 
-        MenuObject sport = new MenuObject("生活及運動用品");
-        sport.setResource(R.drawable.ic_sport_blue);
+        MenuObject sport = new MenuObject("生活用品");
+        sport.setResource(R.drawable.ic_umbrella2_blue);
         menuObjects.add(sport);
 
-        MenuObject shirt = new MenuObject("衣物、手錶與配件");
-        shirt.setResource(R.drawable.ic_shirt_blue);
+        MenuObject shirt = new MenuObject("衣物配件");
+        shirt.setResource(R.drawable.ic_sport_blue);
         menuObjects.add(shirt);
 
-        MenuObject money = new MenuObject("現金、證件、票卡");
+        MenuObject money = new MenuObject("現金證件");
         money.setResource(R.drawable.ic_money_blue);
         menuObjects.add(money);
 
@@ -124,12 +110,12 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
         menuObjects.add(stationery);
 
 
-        MenuObject threec = new MenuObject("3C");
+        MenuObject threec = new MenuObject("３Ｃ周邊");
         threec.setResource(R.drawable.ic_usb2_blue);
         menuObjects.add(threec);
 
-        MenuObject other = new MenuObject("鑰匙、其他");
-        other.setResource(R.drawable.ic_umbrella2_blue);
+        MenuObject other = new MenuObject("其他");
+        other.setResource(R.drawable.ic_else_blue);
         menuObjects.add(other);
 
         MenuObject refresh = new MenuObject();
@@ -209,19 +195,21 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     private void getLostitemsList() {
         String url = "http://52.68.136.81:3000/api/lostitems";
 
+        progress = ProgressDialog.show(LostitemsListActivity.this, "下載資料", "下載遺失物列表中，請稍待片刻...", true);
         ApiRequestClient.get(url, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 /** If the response is JSONObject instead of expected JSONArray */
+                progress.dismiss();
             }
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray lostitemsList) {
                 lostitems = lostitemsList;
                 String use_to_set;
-               // int pos[];
+                // int pos[];
                 pos = new int[lostitems.length()];
-                int set_for_list=0;
+                int set_for_list = 0;
                 for (int i = 0; i < lostitems.length(); i++) {
                     try {
                         JSONObject lostitem = (JSONObject) lostitems.get(i);
@@ -238,7 +226,6 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
                         item.put("category", category.getString("name"));
 
 
-
                         JSONObject picture = lostitem.getJSONObject("picture");
                         JSONObject picture2 = picture.getJSONObject("picture");
                         JSONObject thumb = picture2.getJSONObject("thumb");
@@ -247,7 +234,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
 
                         item.put("thumb", img);
                         //    item.put("picture", picture.getString("picture.url"));
-                       // if(i >= 1){
+                        // if(i >= 1){
                         switch (setting) {
                             case 0:
                                 pos[set_for_list] = i;
@@ -300,19 +287,20 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
                                 break;
 
                         }
-                       //}
-                       // else  list.add(item);
+                        //}
+                        // else  list.add(item);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
                 setSimpleAdapter();
+                progress.dismiss();
             }
         });
     }
 
     private void setSimpleAdapter() {
-        adapter = new SimpleAdapter(getApplicationContext(),
+        adapter = new LostitemListAdapter(getApplicationContext(),
                 list,
                 R.layout.lostitems_row,
                 new String[]{"category", "description", "contact", "thumb"},
@@ -401,6 +389,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
         //final ViewHolder holder;
         String imageUri = "http://52.68.136.81:3000/uploads/lostitem/picture/4/thumb_ArchLinux.png";
         mListView = (ListView) findViewById(R.id.lostitem_list);
+        mListView.setEmptyView(findViewById(R.id.no_item_msg));
         //  textViewCategory = (TextView) findViewById(R.id.lostitem_category);
         //   textViewContact = (TextView) findViewById(R.id.textView_contact);
         //    textViewDescription = (TextView) findViewById(R.id.textView_description);

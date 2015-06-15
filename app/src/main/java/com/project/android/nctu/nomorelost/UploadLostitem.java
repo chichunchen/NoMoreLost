@@ -1,5 +1,6 @@
 package com.project.android.nctu.nomorelost;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -36,9 +37,11 @@ public class UploadLostitem extends AppCompatActivity {
     private Spinner categorySpinner;
     private String category;
     private ImageView imageView;
+    private EditText uploadItemtitle;
     private EditText uploadDescription;
     private EditText uploadMail;
     private EditText uploadContact;
+    private ProgressDialog progress;
 
     private static String root = null;
     private static String imageFolderPath = null;
@@ -46,6 +49,8 @@ public class UploadLostitem extends AppCompatActivity {
     private static Uri fileUri = null;
     private static final int CAMERA_IMAGE_REQUEST = 1;
     private static final String Tag = "UploadLostitem";
+
+    private RequestParams params;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,25 +63,25 @@ public class UploadLostitem extends AppCompatActivity {
     private void findView() {
         categorySpinner = (Spinner) findViewById(R.id.categorySpinner);
         imageView = (ImageView) findViewById(R.id.capturedImageview);
+        uploadItemtitle = (EditText) findViewById(R.id.upload_item_title);
         uploadContact = (EditText) findViewById(R.id.upload_contact);
         uploadDescription = (EditText) findViewById(R.id.upload_description);
         uploadMail = (EditText) findViewById(R.id.upload_mail);
 
         //設定功能表項目陣列，使用createFromResource()
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.lostitem_category,
-                android.R.layout.simple_spinner_item);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.lostitem_category, R.layout.spinner_text);
 
         categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 category = String.valueOf(pos + 1);
-                Toast.makeText(getApplicationContext(), category, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), category, Toast.LENGTH_SHORT).show();
             }
 
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.spinner_text);
         categorySpinner.setAdapter(adapter);
     }
 
@@ -119,12 +124,10 @@ public class UploadLostitem extends AppCompatActivity {
                     try {
                         GetImageThumbnail getImageThumbnail = new GetImageThumbnail();
                         bitmap = getImageThumbnail.getThumbnail(fileUri, this);
-                    } catch (FileNotFoundException e1) {
-                        // TODO Auto-generated catch block
-                        e1.printStackTrace();
-                    } catch (IOException e1) {
-                        // TODO Auto-generated catch block
-                        e1.printStackTrace();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
 
                     // Setting image image icon on the imageview
@@ -149,14 +152,16 @@ public class UploadLostitem extends AppCompatActivity {
         String contact = uploadContact.getText().toString();
         String mail = uploadMail.getText().toString();
         String description = uploadDescription.getText().toString();
+        String item_title = uploadItemtitle.getText().toString();
 
         File myFile = new File(imageFolderPath, imageName);
         Log.e(Tag, imageFolderPath + imageName);
 
-        RequestParams params = new RequestParams();
+        params = new RequestParams();
         params.put("lostitem[contact]", contact);
         params.put("lostitem[mail]", mail);
         params.put("lostitem[description]", description);
+        params.put("lostitem[item_title]", item_title);
         params.put("lostitem[category_id]", category);
         try {
             params.put("lostitem[picture]", myFile);
@@ -164,8 +169,9 @@ public class UploadLostitem extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        ApiRequestClient.post(url, params, new AsyncHttpResponseHandler() {
+        progress = ProgressDialog.show(UploadLostitem.this, "上傳資料", "上傳遺失物資料中，請稍待片刻...", true);
 
+        ApiRequestClient.post(url, params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 // Successfully got a response
@@ -173,6 +179,7 @@ public class UploadLostitem extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), LostitemsListActivity.class);
 
                 startActivity(intent);
+                progress.dismiss();
             }
 
             @Override
@@ -180,11 +187,26 @@ public class UploadLostitem extends AppCompatActivity {
                     error) {
                 // Response failed :(
                 Toast.makeText(getApplicationContext(), getString(R.string.uploadFailed), Toast.LENGTH_SHORT).show();
+                progress.dismiss();
             }
         });
     }
 
+    private boolean checkInput() {
+        if (uploadContact.getText().length() == 0 ||
+                uploadMail.getText().length() == 0 ||
+                uploadDescription.getText().length() == 0 ||
+                uploadItemtitle.getText().length() == 0) {
+            return false;
+        }
+        return true;
+    }
+
     public void submit(View view) throws UnsupportedEncodingException {
-        postLostitem();
+        if (checkInput())
+            postLostitem();
+        else {
+            Toast.makeText(getApplicationContext(), getString(R.string.uploadFailed), Toast.LENGTH_SHORT).show();
+        }
     }
 }

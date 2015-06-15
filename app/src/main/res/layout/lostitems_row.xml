@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout1"
-        android:layout_width="297dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:weightSum="1">
 
@@ -24,7 +24,7 @@
 
         <TextView
             android:id="@+id/lostitem_category"
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="category"
@@ -32,9 +32,8 @@
             android:textColor="#ffff8b15" />
 
         <LinearLayout
-            android:layout_width="76dp"
+            android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:layout_weight="1.12"
             android:orientation="vertical">
 
             <TextView
