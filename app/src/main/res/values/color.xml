@@ -2,7 +2,9 @@
 
     <color name="black_overlay">#66000000</color>
     <color name="black">#000000</color>
+    <color name="silver">#C0C0C0</color>
     <color name="white">#ffffff</color>
+    <color name="red">#ffff2f3c</color>
     <color name="actionbar_back">#24374a</color>
     <color name="main_blue">#147585</color>
     <color name="highlight">#fffff466</color>
@@ -12,6 +14,7 @@
     <color name="logo_green">#29ED40</color>
     <color name="logo_brown">#511817</color>
     <color name="logo_dark_green">#1EAD28</color>
+    <color name="category_orange">#ffff8b15</color>
     <!-- Upload_Lost_Item -->
     <color name="lost_bule">#FF11A2BC</color>
 </resources>

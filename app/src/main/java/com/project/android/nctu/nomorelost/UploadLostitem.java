@@ -3,6 +3,7 @@ package com.project.android.nctu.nomorelost;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -62,6 +63,7 @@ public class UploadLostitem extends AppCompatActivity {
 
     private void findView() {
         categorySpinner = (Spinner) findViewById(R.id.categorySpinner);
+        categorySpinner.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_ATOP);
         imageView = (ImageView) findViewById(R.id.capturedImageview);
         uploadItemtitle = (EditText) findViewById(R.id.upload_item_title);
         uploadContact = (EditText) findViewById(R.id.upload_contact);

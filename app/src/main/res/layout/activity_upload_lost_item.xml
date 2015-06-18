@@ -43,7 +43,7 @@
             android:layout_margin="10dp"
             android:background="@color/logo_brown"
             android:orientation="horizontal">
-            <!--暫時以棕色為背景 要改spinner的字體顏色-->
+            <!--暫時以棕色為背景 要改spinner的箭頭顏色成logo_dark_green-->
             <TextView
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
