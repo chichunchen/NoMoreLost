@@ -223,6 +223,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
                         HashMap<String, Object> item = new HashMap<String, Object>();
 
                         item.put("id", lostitem.getString("id"));
+                        item.put("title", lostitem.getString("title"));
                         item.put("mail", lostitem.getString("mail"));
                         item.put("contact", lostitem.getString("contact"));
                         item.put("title", lostitem.getString("title"));

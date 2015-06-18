@@ -154,7 +154,7 @@ public class UploadLostitem extends AppCompatActivity {
         String contact = uploadContact.getText().toString();
         String mail = uploadMail.getText().toString();
         String description = uploadDescription.getText().toString();
-        String item_title = uploadItemtitle.getText().toString();
+        String title = uploadItemtitle.getText().toString();
 
         File myFile = new File(imageFolderPath, imageName);
         Log.e(Tag, imageFolderPath + imageName);
@@ -163,7 +163,7 @@ public class UploadLostitem extends AppCompatActivity {
         params.put("lostitem[contact]", contact);
         params.put("lostitem[mail]", mail);
         params.put("lostitem[description]", description);
-        params.put("lostitem[title]", item_title);
+        params.put("lostitem[title]", title);
         params.put("lostitem[category_id]", category);
         try {
             params.put("lostitem[picture]", myFile);
