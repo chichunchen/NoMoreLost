@@ -67,7 +67,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     private ImageView mMenu, thumbImageView;
     private LostitemListAdapter adapter;
     AlertDialog.Builder alert;
-    private TextView textViewCategory, textViewContact, textViewDescription;
+    private TextView textViewCategory, textViewContact, textViewtitle;
     private ProgressDialog progress;
     int setting = 0;
     int pos[];
@@ -225,7 +225,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
                         item.put("id", lostitem.getString("id"));
                         item.put("mail", lostitem.getString("mail"));
                         item.put("contact", lostitem.getString("contact"));
-                        item.put("description", lostitem.getString("description"));
+                        item.put("title", lostitem.getString("title"));
                         item.put("created_at", lostitem.getString("created_at"));
 
                         JSONObject category = lostitem.getJSONObject("category");
@@ -308,8 +308,8 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
         adapter = new LostitemListAdapter(getApplicationContext(),
                 list,
                 R.layout.lostitems_row,
-                new String[]{"category", "description", "contact", "thumb"},
-                new int[]{R.id.lostitem_category, R.id.textView_description, R.id.textView_contact, R.id.imageView}
+                new String[]{"category", "title", "contact", "thumb"},
+                new int[]{R.id.lostitem_category, R.id.textView_title, R.id.textView_contact, R.id.imageView}
         );
 
         adapter.setViewBinder(new ViewBinder() {
@@ -451,7 +451,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
         mListView.setEmptyView(findViewById(R.id.no_item_msg));
         //  textViewCategory = (TextView) findViewById(R.id.lostitem_category);
         //   textViewContact = (TextView) findViewById(R.id.textView_contact);
-        //    textViewDescription = (TextView) findViewById(R.id.textView_description);
+        //    textViewtitle = (TextView) findViewById(R.id.textView_title);
         thumbImageView = (ImageView) findViewById(R.id.imageView);
         //view.setTag(holder);
         DisplayImageOptions options = new DisplayImageOptions.Builder()

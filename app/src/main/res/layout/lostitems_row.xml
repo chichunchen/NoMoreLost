@@ -30,7 +30,7 @@
             android:textColor="@color/category_orange"
             android:layout_gravity="center" />
         <TextView
-            android:id="@+id/textView_description"
+            android:id="@+id/textView_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="6dip"
