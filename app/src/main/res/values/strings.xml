@@ -28,6 +28,7 @@
     <string name="choose_image_source">請選擇拍照程式</string>
     <string name="uploadSuccess">上傳成功，感謝您的愛心。</string>
     <string name="uploadFailed">請檢查您是否有表格漏填，或是上傳的資料格式是否正確。</string>
+    <string name="submit_lostitem">上傳遺失物</string>
 
     <!-- Setting Activity-->
     <string name="back">返回</string>

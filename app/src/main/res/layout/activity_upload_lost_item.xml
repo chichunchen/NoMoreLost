@@ -20,23 +20,26 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp">
+
             <ImageView
                 android:id="@+id/capturedImageview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/default_thumbnail" />
         </LinearLayout>
+
         <Button
-            android:layout_margin="10dp"
             android:id="@+id/upload_lostitem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@color/white"
+            android:onClick="captureImage"
             android:text="@string/upload_picture"
             android:textColor="@color/logo_dark_green"
-            android:textSize="30sp"
-            android:background="@color/white"
-            android:onClick="captureImage"/>
+            android:textSize="30sp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -83,7 +86,6 @@
                 android:textColor="@color/black_overlay"
                 android:textSize="24sp" />
         </LinearLayout>
-
 
 
         <LinearLayout
@@ -165,10 +167,11 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="submit"
                 android:background="@color/white"
-                android:text="Submit"
-                android:textColor="@color/logo_dark_green" />
+                android:onClick="submit"
+                android:text="@string/submit_lostitem"
+                android:textColor="@color/logo_dark_green"
+                android:textSize="24dp" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
