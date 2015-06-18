@@ -223,6 +223,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
                         HashMap<String, Object> item = new HashMap<String, Object>();
 
                         item.put("id", lostitem.getString("id"));
+                        item.put("title", lostitem.getString("title"));
                         item.put("mail", lostitem.getString("mail"));
                         item.put("contact", lostitem.getString("contact"));
                         item.put("description", lostitem.getString("description"));
@@ -308,8 +309,8 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
         adapter = new LostitemListAdapter(getApplicationContext(),
                 list,
                 R.layout.lostitems_row,
-                new String[]{"category", "description", "contact", "thumb"},
-                new int[]{R.id.lostitem_category, R.id.textView_description, R.id.textView_contact, R.id.imageView}
+                new String[]{"title", "category", "description", "contact", "thumb"},
+                new int[]{R.id.lostitem_title, R.id.lostitem_category, R.id.textView_description, R.id.textView_contact, R.id.imageView}
         );
 
         adapter.setViewBinder(new ViewBinder() {
