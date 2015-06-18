@@ -163,7 +163,7 @@ public class UploadLostitem extends AppCompatActivity {
         params.put("lostitem[contact]", contact);
         params.put("lostitem[mail]", mail);
         params.put("lostitem[description]", description);
-        params.put("lostitem[item_title]", item_title);
+        params.put("lostitem[title]", item_title);
         params.put("lostitem[category_id]", category);
         try {
             params.put("lostitem[picture]", myFile);
