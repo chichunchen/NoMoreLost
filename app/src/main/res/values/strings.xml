@@ -19,12 +19,12 @@
 
     <!-- Upload_Lost_Item -->
     <string name="upload_picture">上傳照片</string>
-    <string name="kind">種類: </string>
+    <string name="kind">種類：</string>
     <string name="cat">選擇一個種類</string>
-    <string name="item_title">標題:</string>
-    <string name="description">描述:</string>
-    <string name="phone_number">手機:</string>
-    <string name="email">電子郵件:</string>
+    <string name="item_title">標題：</string>
+    <string name="description">描述：</string>
+    <string name="phone_number">手機：</string>
+    <string name="email">電子郵件：</string>
     <string name="choose_image_source">請選擇拍照程式</string>
     <string name="uploadSuccess">上傳成功，感謝您的愛心。</string>
     <string name="uploadFailed">請檢查您是否有表格漏填，或是上傳的資料格式是否正確。</string>

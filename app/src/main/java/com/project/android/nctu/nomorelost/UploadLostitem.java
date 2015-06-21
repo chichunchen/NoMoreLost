@@ -63,7 +63,7 @@ public class UploadLostitem extends AppCompatActivity {
 
     private void findView() {
         categorySpinner = (Spinner) findViewById(R.id.categorySpinner);
-        categorySpinner.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_ATOP);
+        categorySpinner.getBackground().setColorFilter(getResources().getColor(R.color.logo_dark_green), PorterDuff.Mode.SRC_ATOP);
         imageView = (ImageView) findViewById(R.id.capturedImageview);
         uploadItemtitle = (EditText) findViewById(R.id.upload_item_title);
         uploadContact = (EditText) findViewById(R.id.upload_contact);
