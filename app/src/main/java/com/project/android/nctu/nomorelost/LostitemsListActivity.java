@@ -235,10 +235,11 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
                         JSONObject picture = lostitem.getJSONObject("picture");
                         JSONObject picture2 = picture.getJSONObject("picture");
                         JSONObject thumb = picture2.getJSONObject("thumb");
+                        String imageUri = "http://52.68.136.81:3000/" + thumb.getString("url");
                         String temp = "http://img.hexun.com.tw/2011-06-01/130166523.jpg";
                         Bitmap img = convertStringToIcon(temp);
 
-                        item.put("thumb", img);
+                        item.put("thumb", imageUri);
                         //    item.put("picture", picture.getString("picture.url"));
                         // if(i >= 1){
                         switch (setting) {
@@ -450,9 +451,9 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
         String imageUri = "http://52.68.136.81:3000/uploads/lostitem/picture/4/thumb_ArchLinux.png";
         mListView = (ListView) findViewById(R.id.lostitem_list);
         mListView.setEmptyView(findViewById(R.id.no_item_msg));
-        //  textViewCategory = (TextView) findViewById(R.id.lostitem_category);
-        //   textViewContact = (TextView) findViewById(R.id.textView_contact);
-        //    textViewtitle = (TextView) findViewById(R.id.textView_title);
+        textViewCategory = (TextView) findViewById(R.id.lostitem_category);
+        textViewContact = (TextView) findViewById(R.id.textView_contact);
+        textViewtitle = (TextView) findViewById(R.id.textView_title);
         thumbImageView = (ImageView) findViewById(R.id.imageView);
         //view.setTag(holder);
         DisplayImageOptions options = new DisplayImageOptions.Builder()
