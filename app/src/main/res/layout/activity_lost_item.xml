@@ -1,67 +1,125 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dip"
     android:weightSum="1"
+    android:background="@drawable/i"
     tools:context=".LostItemActivity">
 
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView_title"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_marginTop="10dp"
 
-        <TextView
-            android:id="@+id/textView_mail"
-            android:layout_width="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textView_title_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="標題："
+                android:textColor="@color/light_blue"
+                android:textSize="24sp"
+                android:layout_weight="1" />
+            <TextView
+                android:id="@+id/textView_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="24sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_marginTop="10dp"
+
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/email"
+                android:textColor="@color/light_blue"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textView_mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/textView_cellphone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="手機"
+                android:textColor="@color/light_blue"
+                android:textSize="24sp"
+                android:layout_weight="1" />
+            <TextView
+                android:id="@+id/textView_contact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/button_callPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="call"
+                android:text="Call" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textView_description_top"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/description"
+                android:textColor="@color/light_blue"
+                android:textSize="24sp" />
+            <TextView
+                android:id="@+id/textView_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <ImageView
+                android:id="@+id/lostitem_image"
+                android:layout_width="344dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.73" />
+        </LinearLayout>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView_contact"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/button_callPhone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="call"
-            android:text="Call" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/lostitem_image"
-        android:layout_width="344dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.73" />
-
-</LinearLayout>
+</ScrollView>
