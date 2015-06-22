@@ -13,13 +13,11 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/linearLayout1"
-            android:paddingBottom="3dp"
-            android:paddingLeft="3dp"
-            android:paddingTop="3dp" />
+            />
 
         <View
             android:layout_width="0.5dp"
@@ -31,7 +29,7 @@
         <TextView
             android:id="@+id/lostitem_category"
             android:layout_width="60dp"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:text="category"
@@ -47,13 +45,14 @@
 
         <TextView
             android:id="@+id/textView_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="6dip"
+
             android:text="TextView"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:gravity="center_vertical" />
 
     </LinearLayout>
 
