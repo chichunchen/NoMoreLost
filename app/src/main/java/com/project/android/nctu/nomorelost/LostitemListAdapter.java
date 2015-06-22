@@ -26,8 +26,6 @@ public class LostitemListAdapter extends SimpleAdapter {
     private Context mContext;
     public LayoutInflater inflater = null;
     ImageLoader imageLoader;
-
-
     public LostitemListAdapter(Context context,
                            List<? extends Map<String, ?>> data, int resource, String[] from,
                            int[] to) {
@@ -43,6 +41,7 @@ public class LostitemListAdapter extends SimpleAdapter {
         View vi = convertView;
         if (convertView == null)
             vi = inflater.inflate(R.layout.lostitems_row, null);
+        vi.setBackgroundColor(mContext.getResources().getColor((position % 2 == 0) ? R.color.white : R.color.odd_row));
 
         HashMap<String, Object> data = (HashMap<String, Object>) getItem(position);
      // ImageView imageView;

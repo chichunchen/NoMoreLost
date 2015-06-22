@@ -21,6 +21,13 @@
             android:paddingLeft="3dp"
             android:paddingTop="3dp" />
 
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:id="@+id/separator1"
+            android:visibility="visible"
+            android:background="@color/silver"/>
+
         <TextView
             android:id="@+id/lostitem_category"
             android:layout_width="60dp"
@@ -31,6 +38,12 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/category_orange" />
 
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:id="@+id/separator2"
+            android:visibility="visible"
+            android:background="@color/silver"/>
 
         <TextView
             android:id="@+id/textView_title"
@@ -43,4 +56,11 @@
             android:textColor="@color/black" />
 
     </LinearLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0.5dp"
+        android:id="@+id/separator3"
+        android:visibility="visible"
+        android:background="@color/silver"/>
 </LinearLayout>
