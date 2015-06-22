@@ -17,13 +17,15 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@color/white">
 
             <ImageView
                 android:id="@+id/capturedImageview"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/default_thumbnail" />
+                android:background="@drawable/default_thumbnail_2" />
         </LinearLayout>
 
         <Button
