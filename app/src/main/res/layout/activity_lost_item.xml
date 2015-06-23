@@ -16,17 +16,52 @@
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_height="30dp"
+
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView_title_top"
+                android:id="@+id/textView_contact"
                 android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:text="Phonefor10x"
+                android:textSize="18sp"
+                android:gravity="center_vertical" />
+
+            <LinearLayout
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:text="@string/item_title"
-                android:textColor="@color/light_blue"
-                android:textSize="24sp" />
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp">
+
+                <Button
+                    android:id="@+id/button_callPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ic_call_b"
+                    android:onClick="call" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView_date"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:maxLength="10"
+                android:text="Timeforten"
+                android:textSize="18sp"
+                android:gravity="center_vertical|right"
+                android:layout_marginRight="10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textView_title"
@@ -34,94 +69,32 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:textSize="24sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/time"
-                android:textColor="@color/light_blue"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/textView_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:maxLength="10"
-                android:textSize="24sp" />
+                android:text="Title"
+                android:textSize="36sp"
+                android:gravity="center_horizontal"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="30dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
 
             android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView_cellphone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/phone_number"
-                android:textColor="@color/light_blue"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/textView_contact"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:textSize="24sp" />
-
-            <LinearLayout
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:gravity="right"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/button_callPhone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/ic_call"
-                    android:onClick="call" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView_description_top"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/description"
-                android:textColor="@color/light_blue"
-                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/textView_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:textSize="24sp" />
+                android:text="Description"
+                android:textSize="18sp"
+                android:textColor="@color/black_overlay"
+                android:gravity="center_horizontal"
+                android:layout_marginRight="10dp" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -129,14 +102,16 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:weightSum="1">
+            android:weightSum="1"
+            android:layout_gravity="top"
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/lostitem_image"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="320dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:layout_marginTop="20dp" />
         </LinearLayout>
 
     </LinearLayout>
