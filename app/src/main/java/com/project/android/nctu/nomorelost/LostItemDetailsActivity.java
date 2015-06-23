@@ -31,7 +31,7 @@ public class LostItemDetailsActivity extends Activity {
     private JSONObject lostItem;
 
     private ProgressDialog progress;
-    private TextView textViewTitle, textViewMail, textViewContact, textViewDescription;
+    private TextView textViewTitle, textViewContact, textViewDescription, textViewdate;
     private ImageView imageView;
     JSONObject picture;
     ImageLoader imageLoader;
@@ -62,7 +62,7 @@ public class LostItemDetailsActivity extends Activity {
             try {
                 lostItem = new JSONObject(bundle.getString("lostitem"));
                 textViewTitle.setText(lostItem.getString("title"));
-                textViewMail.setText(lostItem.getString("mail"));
+                textViewdate.setText(lostItem.getString("created_at"));
                 textViewContact.setText(lostItem.getString("contact"));
                 textViewDescription.setText(lostItem.getString("description"));
             } catch (JSONException e) {
@@ -104,7 +104,7 @@ public class LostItemDetailsActivity extends Activity {
     private void findView() {
         imageLoader = ImageLoader.getInstance();
         textViewTitle = (TextView) findViewById(R.id.textView_title);
-        textViewMail = (TextView) findViewById(R.id.textView_mail);
+        textViewdate = (TextView) findViewById(R.id.textView_date);
         textViewContact = (TextView) findViewById(R.id.textView_contact);
         textViewDescription = (TextView) findViewById(R.id.textView_description);
         imageView = (ImageView) findViewById(R.id.lostitem_image);

@@ -30,6 +30,7 @@ class ViewHolder {
     ImageView imageView;
     TextView textViewCategory;
     TextView textViewtitle;
+    TextView textViewdate;
 
 }
 
@@ -66,13 +67,14 @@ public class LostitemListAdapter extends SimpleAdapter {
     }
 
     ImageView imageView;
-    TextView textViewCategory,textViewtitle;
+    TextView textViewCategory, textViewtitle, textViewdate;
     private Context mContext;
     public LayoutInflater inflater = null;
     ImageLoader imageLoader;
+
     public LostitemListAdapter(Context context,
-                           List<? extends Map<String, ?>> data, int resource, String[] from,
-                           int[] to) {
+                               List<? extends Map<String, ?>> data, int resource, String[] from,
+                               int[] to) {
         super(context, data, resource, from, to);
         mContext = context;
         inflater = (LayoutInflater) mContext
@@ -88,6 +90,7 @@ public class LostitemListAdapter extends SimpleAdapter {
        // View vi = convertView;
         ViewHolder holder = null;
         HashMap<String, Object> data = (HashMap<String, Object>) getItem(position);
+
         if (convertView == null || !(convertView.getTag() instanceof ViewHolder)){
             convertView = inflater.inflate(R.layout.lostitems_row, null,false);
             holder =  new ViewHolder();
@@ -105,7 +108,7 @@ public class LostitemListAdapter extends SimpleAdapter {
       //textViewContact = (TextView) findViewById(R.id.textView_contact);
      // textViewtitle = (TextView) vi.findViewById(R.id.textView_title);
        holder.textViewtitle = (TextView) convertView.findViewById(R.id.textView_title);
-
+       holder.textViewdate = (TextView) convertView.findViewById(R.id.textView_date);
 
        convertView.setTag(holder);
         }else{
@@ -114,14 +117,15 @@ public class LostitemListAdapter extends SimpleAdapter {
         }
         String title = (String)data.get("title");
         String category = (String)data.get("category");
+        String date = (String) data.get("created_at");
         holder.textViewtitle.setText(title);
         holder.textViewCategory.setText(category);
+        holder.textViewdate.setText(date);
         String url = (String)data.get("thumb");
 
         imageLoader.displayImage(url,holder.imageView, options,listener);
       //  imageLoader.
         holder.imageView.setTag(url);
-
 
 
         return convertView;

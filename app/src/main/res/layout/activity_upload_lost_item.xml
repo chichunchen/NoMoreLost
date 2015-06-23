@@ -18,76 +18,82 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:gravity="center">
 
             <ImageView
                 android:id="@+id/capturedImageview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/default_thumbnail_2"/>
+                android:background="@drawable/default_thumbnail_2" />
         </LinearLayout>
+
         <View
             android:layout_width="wrap_content"
             android:layout_height="0.5dp"
-            android:visibility="visible"
-            android:background="@color/silver"/>
-        <LinearLayout
-             android:layout_width="match_parent"
-             android:layout_height="40dp"
-             android:gravity="center"
-             android:background="@color/white">
-             <Button
-                 android:id="@+id/upload_lostitem"
-                 android:layout_width="50dp"
-                 android:layout_height="wrap_content"
-                 android:layout_gravity="center"
-                 android:background="@drawable/ic_camara"
-                 android:onClick="captureImage">
+            android:background="@color/silver"
+            android:visibility="visible" />
 
-             </Button>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/white"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/upload_lostitem"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_camara"
+                android:onClick="captureImage">
+
+            </Button>
         </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:background="@color/white"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:orientation="horizontal">
             <!--暫時以棕色為背景 要改spinner的箭頭顏色成logo_dark_green-->
             <TextView
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/kind"
-                android:textColor="@color/logo_dark_green"
-                android:textSize="24sp"
                 android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"/>
+                android:text="@string/kind"
+                android:textColor="@color/logo_dark_green"
+                android:textSize="24sp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:orientation="horizontal"
-                android:gravity="right">
+                android:gravity="right"
+                android:orientation="horizontal">
+
                 <Spinner
-                android:id="@+id/categorySpinner"
-                android:layout_width="120dp"
-                android:layout_height="match_parent"
-                android:drawSelectorOnTop="true"
-                android:prompt="@string/cat"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp" />
+                    android:id="@+id/categorySpinner"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:drawSelectorOnTop="true"
+                    android:prompt="@string/cat" />
             </LinearLayout>
         </LinearLayout>
+
         <View
             android:layout_width="wrap_content"
             android:layout_height="0.5dp"
-            android:visibility="visible"
-            android:background="@color/silver"/>
+            android:background="@color/silver"
+            android:visibility="visible" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -99,28 +105,30 @@
                 android:id="@+id/textView_title"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
                 android:text="@string/item_title"
                 android:textColor="@color/logo_dark_green"
-                android:textSize="24sp"
-                android:gravity="center"
-                android:layout_marginLeft="10dp" />
+                android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/upload_item_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:gravity="right"
-                android:textAlignment="gravity"
                 android:layout_marginRight="10dp"
-                android:maxLength="16" />
+                android:gravity="right"
+                android:longClickable="false"
+                android:maxLength="6"
+                android:textAlignment="gravity"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
         </LinearLayout>
+
         <View
             android:layout_width="wrap_content"
             android:layout_height="0.5dp"
-            android:visibility="visible"
-            android:background="@color/silver"/>
+            android:background="@color/silver"
+            android:visibility="visible" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -132,57 +140,59 @@
                 android:id="@+id/textView_description"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
                 android:text="@string/description"
                 android:textColor="@color/logo_dark_green"
-                android:textSize="24sp"
-                android:gravity="center"
-                android:layout_marginLeft="10dp" />
+                android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/upload_description"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:gravity="right"
-                android:textAlignment="gravity"
                 android:layout_marginRight="10dp"
-                android:maxLength="36" />
+                android:gravity="right"
+                android:maxLength="36"
+                android:textAlignment="gravity"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:background="@color/white"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
                 android:text="@string/phone_number"
                 android:textColor="@color/logo_dark_green"
-                android:textSize="24sp"
-                android:gravity="center"
-                android:layout_marginLeft="10dp" />
+                android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/upload_contact"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:inputType="phone"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:gravity="right"
-                android:textAlignment="gravity"
                 android:layout_marginRight="10dp"
-                android:maxLength="10" />
+                android:gravity="right"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:textAlignment="gravity"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
         </LinearLayout>
+
         <View
             android:layout_width="wrap_content"
             android:layout_height="0.5dp"
-            android:visibility="visible"
-            android:background="@color/silver"/>
+            android:background="@color/silver"
+            android:visibility="visible" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -192,31 +202,31 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/email"
-                android:inputType="textEmailAddress"
-                android:textColor="@color/logo_dark_green"
-                android:textSize="24sp"
+                android:layout_marginLeft="10dp"
                 android:gravity="center"
-                android:layout_marginLeft="10dp" />
+                android:inputType="textEmailAddress"
+                android:text="@string/email"
+                android:textColor="@color/logo_dark_green"
+                android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/upload_mail"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:textColor="@color/black"
-                android:textSize="24sp"
+                android:layout_marginRight="10dp"
                 android:gravity="right"
+                android:inputType="textEmailAddress"
                 android:textAlignment="gravity"
-                android:layout_marginRight="10dp"/>
+                android:textColor="@color/black"
+                android:textSize="24sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:background="@color/white"
-            android:orientation="vertical"
-            android:layout_marginTop="10dp">
+            android:orientation="vertical">
 
             <Button
                 android:layout_width="match_parent"
@@ -225,8 +235,7 @@
                 android:onClick="submit"
                 android:text="@string/submit_lostitem"
                 android:textColor="@color/logo_dark_green"
-                android:textSize="24dp"
-                />
+                android:textSize="24dp" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
