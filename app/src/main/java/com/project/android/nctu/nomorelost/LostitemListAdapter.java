@@ -1,6 +1,5 @@
 package com.project.android.nctu.nomorelost;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
@@ -14,7 +13,6 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
-import com.project.android.nctu.nomorelost.utils.DownloadTask;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -85,46 +83,46 @@ public class LostitemListAdapter extends SimpleAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         imageLoader = ImageLoader.getInstance();
         DisplayImageOptions options = getSimpleOptions();
-        AnimateFirstDisplayListener listener ;
-        listener = new  AnimateFirstDisplayListener();
-       // View vi = convertView;
+        AnimateFirstDisplayListener listener;
+        listener = new AnimateFirstDisplayListener();
+        // View vi = convertView;
         ViewHolder holder = null;
         HashMap<String, Object> data = (HashMap<String, Object>) getItem(position);
 
-        if (convertView == null || !(convertView.getTag() instanceof ViewHolder)){
-            convertView = inflater.inflate(R.layout.lostitems_row, null,false);
-            holder =  new ViewHolder();
-           // holder =
+        if (convertView == null || !(convertView.getTag() instanceof ViewHolder)) {
+            convertView = inflater.inflate(R.layout.lostitems_row, null, false);
+            holder = new ViewHolder();
+            // holder =
             //convertView.setTag(holder);
 
 //        vi.setBackgroundColor(mContext.getResources().getColor((position % 2 == 0) ? R.color.white : R.color.odd_row));
 
 
-     // ImageView imageView;
-     // imageView = (ImageView) vi.findViewById(R.id.imageView);
-      holder.imageView =      (ImageView) convertView.findViewById(R.id.imageView);
-     // textViewCategory = (TextView) vi.findViewById(R.id.lostitem_category);
-      holder.textViewCategory = (TextView) convertView.findViewById(R.id.lostitem_category);
-      //textViewContact = (TextView) findViewById(R.id.textView_contact);
-     // textViewtitle = (TextView) vi.findViewById(R.id.textView_title);
-       holder.textViewtitle = (TextView) convertView.findViewById(R.id.textView_title);
-       holder.textViewdate = (TextView) convertView.findViewById(R.id.textView_date);
+            // ImageView imageView;
+            // imageView = (ImageView) vi.findViewById(R.id.imageView);
+            holder.imageView = (ImageView) convertView.findViewById(R.id.imageView);
+            // textViewCategory = (TextView) vi.findViewById(R.id.lostitem_category);
+            holder.textViewCategory = (TextView) convertView.findViewById(R.id.lostitem_category);
+            //textViewContact = (TextView) findViewById(R.id.textView_contact);
+            // textViewtitle = (TextView) vi.findViewById(R.id.textView_title);
+            holder.textViewtitle = (TextView) convertView.findViewById(R.id.textView_title);
+            holder.textViewdate = (TextView) convertView.findViewById(R.id.textView_date);
 
-       convertView.setTag(holder);
-        }else{
+            convertView.setTag(holder);
+        } else {
             holder = (ViewHolder) convertView.getTag();
 
         }
-        String title = (String)data.get("title");
-        String category = (String)data.get("category");
+        String title = (String) data.get("title");
+        String category = (String) data.get("category");
         String date = (String) data.get("created_at");
         holder.textViewtitle.setText(title);
         holder.textViewCategory.setText(category);
         holder.textViewdate.setText(date);
-        String url = (String)data.get("thumb");
+        String url = (String) data.get("thumb");
 
-        imageLoader.displayImage(url,holder.imageView, options,listener);
-      //  imageLoader.
+        imageLoader.displayImage(url, holder.imageView, options, listener);
+        //  imageLoader.
         holder.imageView.setTag(url);
 
 

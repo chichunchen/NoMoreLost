@@ -6,13 +6,11 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.annotation.IntegerRes;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -60,7 +58,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     private ListView mListView;
     public JSONArray lostitems;
     private ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
-    private ArrayList<HashMap<String, Object>> mSearchList =  new ArrayList<HashMap<String, Object>>();
+    private ArrayList<HashMap<String, Object>> mSearchList = new ArrayList<HashMap<String, Object>>();
     private boolean isInitialized = false;
     private FragmentManager mFragmentManager;
     private DialogFragment mMenuDialogFragment;
@@ -231,7 +229,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
                         item.put("contact", lostitem.getString("contact"));
                         item.put("title", lostitem.getString("title"));
                         item.put("created_at", lostitem.getString("created_at"));
-                        item.put("num",i);
+                        item.put("num", i);
                         JSONObject category = lostitem.getJSONObject("category");
                         item.put("category", category.getString("name"));
                         item.put("cate_ID", category.getString("id"));
@@ -339,6 +337,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
         mListView.setOnItemClickListener(itemClickListener);
         mListView.setOnItemLongClickListener(itemLongClickListener);
     }
+
     private void setSimpleAdapter2() {
         adapter = new LostitemListAdapter(getApplicationContext(),
                 mSearchList,
@@ -376,7 +375,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             try {
                 JSONObject lostitem = (JSONObject) lostitems.get(pos[position]);
-                Log.e(TAG, "lostitem: " + lostitem);
+                // Log.e(TAG, "lostitem: " + lostitem);
                 Intent intent = new Intent();
                 intent.setClass(getApplicationContext(), LostItemDetailsActivity.class);
                 Bundle bundle = new Bundle();
@@ -439,7 +438,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
             });
             alert.show();
 
-            Toast.makeText(getApplicationContext(), item_id, Toast.LENGTH_SHORT).show();
+            // Toast.makeText(getApplicationContext(), item_id, Toast.LENGTH_SHORT).show();
             return false;
         }
     };
@@ -483,7 +482,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
         //final ViewHolder holder;
         String imageUri = "http://52.68.136.81:3000/uploads/lostitem/picture/4/thumb_ArchLinux.png";
         mListView = (ListView) findViewById(R.id.lostitem_list);
-      //  mListView.setTextFilterEnabled(true);
+        //  mListView.setTextFilterEnabled(true);
         mListView.setEmptyView(findViewById(R.id.no_item_msg));
         textViewCategory = (TextView) findViewById(R.id.lostitem_category);
         textViewdate = (TextView) findViewById(R.id.textView_date);
@@ -586,9 +585,9 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     public Object[] searchItem(String name) {
         //pos = new int[lostitems.length()];
         mSearchList.clear();
-        int set_for_list=0;
-            for (int i = 0; i < list.size(); i++) {
-           int index = list.get(i).get("title").toString().indexOf(name);
+        int set_for_list = 0;
+        for (int i = 0; i < list.size(); i++) {
+            int index = list.get(i).get("title").toString().indexOf(name);
             // 存在匹配的数据
             if (index != -1) {
                 /*switch (setting) {
@@ -645,10 +644,10 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
                     break;
 
             }*/
-             //   pos[set_for_list] = i;
+                //   pos[set_for_list] = i;
 
-             //   set_for_list++;
-                String temp =  list.get(i).get("num").toString();
+                //   set_for_list++;
+                String temp = list.get(i).get("num").toString();
                 int num = Integer.parseInt(temp);
                 pos[set_for_list] = num;
                 set_for_list++;
@@ -661,5 +660,6 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
 
     public void updateLayout(Object[] obj) {
         mListView.setAdapter(adapter);
-    }}
+    }
+}
 
