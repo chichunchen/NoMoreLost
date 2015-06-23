@@ -6,8 +6,13 @@ An android app which is a platform devoting to help people find their lost items
 
 ## Snapshots
 
+## Downloads
+
+[![QR Code](https://lh3.ggpht.com/csXEddxiLgQ6FxckefjQnP1PVugbaAYOdcuTa3vVtGV1PlWbFu2dYggoH8rI1w2RdEz1=w50)](http://google.com) 
+[<img src="http://mobway.in/image/apk.png" height="45px" />](http://google.com)
+
 ## Promote Video
-[![ScreenShot](https://github.com/chichunchen/NoMoreLost/images/youtube-snapshot.png)](https://www.youtube.com/watch?v=eFvlSmZxyEs&index=9&list=PLoR2h6cxEh7KIWRbmOaHdBbSf2Mgr6eax)
+[![Check out our video](https://github.com/chichunchen/NoMoreLost/images/youtube-snapshot.png)](https://www.youtube.com/watch?v=eFvlSmZxyEs&index=9&list=PLoR2h6cxEh7KIWRbmOaHdBbSf2Mgr6eax)
 
 ## Contributing
 
@@ -16,6 +21,16 @@ An android app which is a platform devoting to help people find their lost items
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+## Acknowledgements
+
+This project uses many other open source libraries such as:
+
+* [Android-Async-Http](http://loopj.com/android-async-http/)
+* [Context-Menu](http://yalantis.com/)
+* [UniversalImage](https://github.com/nostra13/Android-Universal-Image-Loader)
+
+These are just a few of the major dependencies, the entire list of dependencies is listed in the app's build.gradle file.
 
 ## License
 
