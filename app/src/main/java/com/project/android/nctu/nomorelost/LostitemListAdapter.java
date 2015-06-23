@@ -22,13 +22,14 @@ import java.util.Map;
 
 public class LostitemListAdapter extends SimpleAdapter {
     ImageView imageView;
-    TextView textViewCategory,textViewtitle,textViewdate;
+    TextView textViewCategory, textViewtitle, textViewdate;
     private Context mContext;
     public LayoutInflater inflater = null;
     ImageLoader imageLoader;
+
     public LostitemListAdapter(Context context,
-                           List<? extends Map<String, ?>> data, int resource, String[] from,
-                           int[] to) {
+                               List<? extends Map<String, ?>> data, int resource, String[] from,
+                               int[] to) {
         super(context, data, resource, from, to);
         mContext = context;
         inflater = (LayoutInflater) mContext
@@ -44,20 +45,20 @@ public class LostitemListAdapter extends SimpleAdapter {
         vi.setBackgroundColor(mContext.getResources().getColor((position % 2 == 0) ? R.color.white : R.color.odd_row));
 
         HashMap<String, Object> data = (HashMap<String, Object>) getItem(position);
-     // ImageView imageView;
-      imageView = (ImageView) vi.findViewById(R.id.imageView);
-      textViewCategory = (TextView) vi.findViewById(R.id.lostitem_category);
-      textViewdate = (TextView) vi.findViewById(R.id.textView_date);
-      textViewtitle = (TextView) vi.findViewById(R.id.textView_title);
-        String title = (String)data.get("title");
-        String category = (String)data.get("category");
-        String date=(String)data.get("created_at");
+        // ImageView imageView;
+        imageView = (ImageView) vi.findViewById(R.id.imageView);
+        textViewCategory = (TextView) vi.findViewById(R.id.lostitem_category);
+        textViewdate = (TextView) vi.findViewById(R.id.textView_date);
+        textViewtitle = (TextView) vi.findViewById(R.id.textView_title);
+        String title = (String) data.get("title");
+        String category = (String) data.get("category");
+        String date = (String) data.get("created_at");
         textViewdate.setText(date);
         textViewtitle.setText(title);
         textViewCategory.setText(category);
-      String url = (String)data.get("thumb");
+        String url = (String) data.get("thumb");
 
-      imageLoader.displayImage(url,imageView);
+        imageLoader.displayImage(url, imageView);
 
 
         return vi;

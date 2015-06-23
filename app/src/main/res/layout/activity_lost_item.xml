@@ -2,10 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/i"
     android:orientation="vertical"
     android:padding="10dip"
     android:weightSum="1"
-    android:background="@drawable/i"
     tools:context=".LostItemActivity">
 
 
@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/textView_title_top"
                 android:layout_width="wrap_content"
@@ -26,20 +27,23 @@
                 android:text="@string/item_title"
                 android:textColor="@color/light_blue"
                 android:textSize="24sp" />
+
             <TextView
                 android:id="@+id/textView_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:textSize="24sp"
-                android:layout_marginLeft="10dp" />
+                android:textSize="24sp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
 
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -51,10 +55,9 @@
                 android:id="@+id/textView_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:layout_weight="1"
                 android:layout_marginLeft="10dp"
-                />
+                android:layout_weight="1"
+                android:textSize="24sp" />
 
         </LinearLayout>
 
@@ -64,6 +67,7 @@
             android:layout_marginTop="10dp"
 
             android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/textView_cellphone"
                 android:layout_width="wrap_content"
@@ -71,25 +75,29 @@
                 android:text="@string/phone_number"
                 android:textColor="@color/light_blue"
                 android:textSize="24sp" />
+
             <TextView
                 android:id="@+id/textView_contact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
+                android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:layout_marginLeft="10dp" />
+                android:maxLength="10"
+                android:textSize="24sp" />
+
             <LinearLayout
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="right">
-            <Button
-                android:id="@+id/button_callPhone"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:onClick="call"
-                android:background="@drawable/ic_call" />
-        </LinearLayout>
+                android:gravity="right"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button_callPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ic_call"
+                    android:onClick="call" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -98,6 +106,7 @@
             android:layout_marginTop="10dp"
 
             android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/textView_description_top"
                 android:layout_width="wrap_content"
@@ -105,13 +114,14 @@
                 android:text="@string/description"
                 android:textColor="@color/light_blue"
                 android:textSize="24sp" />
+
             <TextView
                 android:id="@+id/textView_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
+                android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:layout_marginLeft="10dp" />
+                android:textSize="24sp" />
         </LinearLayout>
 
         <LinearLayout
