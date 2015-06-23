@@ -114,7 +114,8 @@
                 android:gravity="right"
                 android:textAlignment="gravity"
                 android:layout_marginRight="10dp"
-                android:maxLength="12" />
+                android:maxLength="6"
+                android:longClickable="false" />
         </LinearLayout>
         <View
             android:layout_width="wrap_content"
