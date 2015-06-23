@@ -5,4 +5,7 @@
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:textColor="@color/black"
-    android:textSize="24sp"></TextView>
+    android:textSize="24sp"
+    android:gravity="right"
+    android:textAlignment="gravity"
+    android:layout_marginRight="10dp"></TextView>

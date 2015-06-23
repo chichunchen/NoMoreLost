@@ -53,16 +53,19 @@
                 android:text="@string/kind"
                 android:textColor="@color/logo_dark_green"
                 android:textSize="24sp"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
 
             <Spinner
                 android:id="@+id/categorySpinner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:drawSelectorOnTop="true"
                 android:prompt="@string/cat"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp" />
+                 />
         </LinearLayout>
 
 
@@ -79,14 +82,18 @@
                 android:text="@string/item_title"
                 android:textColor="@color/logo_dark_green"
                 android:textSize="24sp"
-                android:gravity="center" />
+                android:gravity="center"
+                android:layout_marginLeft="10dp" />
 
             <EditText
                 android:id="@+id/upload_item_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black_overlay"
-                android:textSize="24sp" />
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:gravity="right"
+                android:textAlignment="gravity"
+                android:layout_marginRight="10dp" />
         </LinearLayout>
 
 
@@ -103,14 +110,18 @@
                 android:text="@string/description"
                 android:textColor="@color/logo_dark_green"
                 android:textSize="24sp"
-                android:gravity="center" />
+                android:gravity="center"
+                android:layout_marginLeft="10dp" />
 
             <EditText
                 android:id="@+id/upload_description"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black_overlay"
-                android:textSize="24sp" />
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:gravity="right"
+                android:textAlignment="gravity"
+                android:layout_marginRight="10dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -126,15 +137,19 @@
                 android:text="@string/phone_number"
                 android:textColor="@color/logo_dark_green"
                 android:textSize="24sp"
-                android:gravity="center" />
+                android:gravity="center"
+                android:layout_marginLeft="10dp" />
 
             <EditText
                 android:id="@+id/upload_contact"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
-                android:textColor="@color/black_overlay"
-                android:textSize="24sp" />
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:gravity="right"
+                android:textAlignment="gravity"
+                android:layout_marginRight="10dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -149,15 +164,19 @@
                 android:text="@string/email"
                 android:textColor="@color/logo_dark_green"
                 android:textSize="24sp"
-                android:gravity="center" />
+                android:gravity="center"
+                android:layout_marginLeft="10dp" />
 
             <EditText
                 android:id="@+id/upload_mail"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:textColor="@color/black_overlay"
-                android:textSize="24sp" />
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:gravity="right"
+                android:textAlignment="gravity"
+                android:layout_marginRight="10dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -174,7 +193,8 @@
                 android:onClick="submit"
                 android:text="@string/submit_lostitem"
                 android:textColor="@color/logo_dark_green"
-                android:textSize="24dp" />
+                android:textSize="24dp"
+                />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
