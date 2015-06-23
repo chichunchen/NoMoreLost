@@ -6,11 +6,13 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.annotation.IntegerRes;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -58,7 +60,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     private ListView mListView;
     public JSONArray lostitems;
     private ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
-
+    private ArrayList<HashMap<String, Object>> mSearchList =  new ArrayList<HashMap<String, Object>>();
     private boolean isInitialized = false;
     private FragmentManager mFragmentManager;
     private DialogFragment mMenuDialogFragment;
@@ -156,6 +158,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
         mSearch = (SearchView) findViewById(R.id.search);
         mSearch.addOnLayoutChangeListener(searchExpandHandler);
         mSearch.setOnQueryTextListener(this);
+        mSearch.setSubmitButtonEnabled(false);
         mSearch.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
@@ -228,10 +231,10 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
                         item.put("contact", lostitem.getString("contact"));
                         item.put("title", lostitem.getString("title"));
                         item.put("created_at", lostitem.getString("created_at"));
-
+                        item.put("num",i);
                         JSONObject category = lostitem.getJSONObject("category");
                         item.put("category", category.getString("name"));
-
+                        item.put("cate_ID", category.getString("id"));
                         JSONObject picture = lostitem.getJSONObject("picture");
                         JSONObject picture2 = picture.getJSONObject("picture");
                         JSONObject thumb = picture2.getJSONObject("thumb");
@@ -309,6 +312,36 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     private void setSimpleAdapter() {
         adapter = new LostitemListAdapter(getApplicationContext(),
                 list,
+                R.layout.lostitems_row,
+                new String[]{"category", "title", "date", "thumb"},
+                new int[]{R.id.lostitem_category, R.id.textView_title, R.id.textView_date, R.id.imageView}
+        );
+
+        adapter.setViewBinder(new ViewBinder() {
+            public boolean setViewValue(View view, Object data,
+                                        String textRepresentation) {
+
+                if (view instanceof ImageView && data instanceof Bitmap) {
+                    ImageView iv = (ImageView) view;
+                    iv.setImageBitmap((Bitmap) data);
+                    return true;
+                } else
+                    return false;
+            }
+        });
+
+        mListView.setAdapter(adapter);
+
+        //    thumbImageView.setImageBitmap();
+        //    mListView.setAdapter(adapter);
+        // thumbImageView.setImageBitmap( convertStringToIcon(temp));
+
+        mListView.setOnItemClickListener(itemClickListener);
+        mListView.setOnItemLongClickListener(itemLongClickListener);
+    }
+    private void setSimpleAdapter2() {
+        adapter = new LostitemListAdapter(getApplicationContext(),
+                mSearchList,
                 R.layout.lostitems_row,
                 new String[]{"category", "title", "date", "thumb"},
                 new int[]{R.id.lostitem_category, R.id.textView_title, R.id.textView_date, R.id.imageView}
@@ -450,6 +483,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
         //final ViewHolder holder;
         String imageUri = "http://52.68.136.81:3000/uploads/lostitem/picture/4/thumb_ArchLinux.png";
         mListView = (ListView) findViewById(R.id.lostitem_list);
+      //  mListView.setTextFilterEnabled(true);
         mListView.setEmptyView(findViewById(R.id.no_item_msg));
         textViewCategory = (TextView) findViewById(R.id.lostitem_category);
         textViewdate = (TextView) findViewById(R.id.textView_date);
@@ -473,10 +507,12 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     public void onMenuItemClick(View view, int position) {
         String[] lostitem_category = getResources().getStringArray(R.array.lostitem_category);
         Intent refresh = new Intent(this, LostitemsListActivity.class);
+
         switch (position) {
             case 0:
                 break;
             case 1:
+
                 mTitle.setText(lostitem_category[0]);
                 setting = 1;
                 list.clear();
@@ -533,12 +569,97 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     }
 
     @Override
-    public boolean onQueryTextSubmit(String s) {
+    public boolean onQueryTextChange(String newText) {
+        mSearchList.clear();
+        Object[] obj = searchItem(newText);
+        updateLayout(obj);
         return false;
     }
 
     @Override
-    public boolean onQueryTextChange(String s) {
+    public boolean onQueryTextSubmit(String query) {
+        // TODO Auto-generated method stub
         return false;
     }
-}
+
+
+    public Object[] searchItem(String name) {
+        //pos = new int[lostitems.length()];
+        mSearchList.clear();
+        int set_for_list=0;
+            for (int i = 0; i < list.size(); i++) {
+           int index = list.get(i).get("title").toString().indexOf(name);
+            // 存在匹配的数据
+            if (index != -1) {
+                /*switch (setting) {
+                case 0:
+                   String temp =  list.get(i).get("num").toString();
+                    int num = Integer.parseInt(temp);
+                    pos[set_for_list] = num;
+                    set_for_list++;
+                    mSearchList.add(list.get(i));
+
+                    break;
+                case 1:
+
+                    if (list.get(i).get("cate_ID").toString().equals("1")) {
+                        pos[set_for_list] = i;
+                        set_for_list++;
+                        mSearchList.add(list.get(i));
+                    }
+                    break;
+                case 2:
+                    if (list.get(i).get("cate_ID").toString().equals("2")) {
+                        pos[set_for_list] = i;
+                        set_for_list++;
+                        mSearchList.add(list.get(i));
+                    }
+                    break;
+                case 3:
+                    if (list.get(i).get("cate_ID").toString().equals("3")) {
+                        pos[set_for_list] = i;
+                        set_for_list++;
+                    mSearchList.add(list.get(i));
+                    }
+                    break;
+                case 4:
+                    if (list.get(i).get("cate_ID").toString().equals("4")) {
+                        pos[set_for_list] = i;
+                        set_for_list++;
+                        mSearchList.add(list.get(i));
+                    }
+                    break;
+                case 5:
+                    if (list.get(i).get("cate_ID").toString().equals("5")) {
+                        pos[set_for_list] = i;
+                        set_for_list++;
+                        mSearchList.add(list.get(i));
+                    }
+                    break;
+                case 6:
+                    if (list.get(i).get("cate_ID").toString().equals("6")) {
+                        pos[set_for_list] = i;
+                        set_for_list++;
+                        mSearchList.add(list.get(i));
+                    }
+                    break;
+
+            }*/
+             //   pos[set_for_list] = i;
+
+             //   set_for_list++;
+                String temp =  list.get(i).get("num").toString();
+                int num = Integer.parseInt(temp);
+                pos[set_for_list] = num;
+                set_for_list++;
+                mSearchList.add(list.get(i));
+            }
+        }
+        setSimpleAdapter2();
+        return mSearchList.toArray();
+    }
+
+    public void updateLayout(Object[] obj) {
+        mListView.setAdapter(adapter);
+    }}
+
