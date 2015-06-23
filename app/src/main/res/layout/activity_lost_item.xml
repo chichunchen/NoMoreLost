@@ -23,7 +23,7 @@
                 android:id="@+id/textView_title_top"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="標題："
+                android:text="@string/item_title"
                 android:textColor="@color/light_blue"
                 android:textSize="24sp" />
             <TextView
@@ -31,7 +31,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="24sp"/>
+                android:textSize="24sp"
+                android:layout_marginLeft="10dp" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="fill_parent"
@@ -51,7 +52,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp" />
 
         </LinearLayout>
 
@@ -73,16 +75,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
-                android:layout_weight="1" />
-
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp" />
+            <LinearLayout
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="right">
             <Button
                 android:id="@+id/button_callPhone"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:onClick="call"
-                android:text="@string/Call"
-                android:textSize="24sp"
-                android:background="@color/silver" />
+                android:background="@drawable/ic_call" />
+        </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -103,7 +109,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp" />
         </LinearLayout>
 
         <LinearLayout

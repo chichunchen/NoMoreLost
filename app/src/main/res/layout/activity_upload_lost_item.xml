@@ -25,26 +25,36 @@
                 android:id="@+id/capturedImageview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/default_thumbnail_2" />
+                android:background="@drawable/default_thumbnail_2"/>
+        </LinearLayout>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0.5dp"
+            android:visibility="visible"
+            android:background="@color/silver"/>
+        <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="40dp"
+             android:gravity="center"
+             android:background="@color/white">
+             <Button
+                 android:id="@+id/upload_lostitem"
+                 android:layout_width="50dp"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center"
+                 android:background="@drawable/ic_camara"
+                 android:onClick="captureImage">
+
+             </Button>
         </LinearLayout>
 
-        <Button
-            android:id="@+id/upload_lostitem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@color/white"
-            android:onClick="captureImage"
-            android:text="@string/upload_picture"
-            android:textColor="@color/logo_dark_green"
-            android:textSize="24dp"
-            android:layout_marginBottom="10dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
             <!--暫時以棕色為背景 要改spinner的箭頭顏色成logo_dark_green-->
             <TextView
                 android:id="@+id/title"
@@ -57,17 +67,27 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"/>
-
-            <Spinner
-                android:id="@+id/categorySpinner"
+            <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:gravity="right">
+                <Spinner
+                android:id="@+id/categorySpinner"
+                android:layout_width="120dp"
                 android:layout_height="match_parent"
                 android:drawSelectorOnTop="true"
                 android:prompt="@string/cat"
-                android:layout_marginLeft="10dp"
-                 />
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp" />
+            </LinearLayout>
         </LinearLayout>
-
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0.5dp"
+            android:visibility="visible"
+            android:background="@color/silver"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -95,7 +115,11 @@
                 android:textAlignment="gravity"
                 android:layout_marginRight="10dp" />
         </LinearLayout>
-
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0.5dp"
+            android:visibility="visible"
+            android:background="@color/silver"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -151,7 +175,11 @@
                 android:textAlignment="gravity"
                 android:layout_marginRight="10dp"/>
         </LinearLayout>
-
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0.5dp"
+            android:visibility="visible"
+            android:background="@color/silver"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
