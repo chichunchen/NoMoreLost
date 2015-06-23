@@ -18,7 +18,7 @@ An android app which is a platform devoting to help people find their lost items
 [<img src="http://mobway.in/image/apk.png" height="45px" />](http://google.com)
 
 ## Promote Video
-[![Check out our video](https://github.com/chichunchen/NoMoreLost/images/youtube-snapshot.png)](https://www.youtube.com/watch?v=eFvlSmZxyEs&index=9&list=PLoR2h6cxEh7KIWRbmOaHdBbSf2Mgr6eax)
+[![Check out our video](https://chichunchen.github.io/NoMoreLost/images/youtube-snapshot.png)](https://www.youtube.com/watch?v=eFvlSmZxyEs&index=9&list=PLoR2h6cxEh7KIWRbmOaHdBbSf2Mgr6eax)
 
 ## Contributing
 
