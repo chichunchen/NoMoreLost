@@ -6,6 +6,12 @@ An android app which is a platform devoting to help people find their lost items
 
 ## Snapshots
 
+<img src="http://chichunchen.github.io/NoMoreLost/images/MainActivity.png" height="400px" />
+<img src="http://chichunchen.github.io/NoMoreLost/images/LostitemList.png" height="400px" />
+<img src="http://chichunchen.github.io/NoMoreLost/images/LostitemDetail.png" height="400px" />
+<img src="http://chichunchen.github.io/NoMoreLost/images/UploadActivity.png" height="400px" />
+<img src="http://chichunchen.github.io/NoMoreLost/images/DeleteLostitem.png" height="400px" />
+
 ## Downloads
 
 [![QR Code](https://lh3.ggpht.com/csXEddxiLgQ6FxckefjQnP1PVugbaAYOdcuTa3vVtGV1PlWbFu2dYggoH8rI1w2RdEz1=w50)](http://google.com) 
