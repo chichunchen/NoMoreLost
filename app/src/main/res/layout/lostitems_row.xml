@@ -9,7 +9,7 @@
         android:id="@+id/linearLayout1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:weightSum="1">
+        >
 
         <ImageView
             android:id="@+id/imageView"
@@ -44,15 +44,29 @@
             android:background="@color/silver"/>
 
         <TextView
-            android:id="@+id/textView_title"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
+        android:id="@+id/textView_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
+            android:textSize="20dp"
+        android:text="TextView"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/black"
+            android:layout_gravity="center_vertical" />
+
+        <TextView
+            android:id="@+id/textView_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textSize="12dp"
             android:text="TextView"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/black"
-            android:gravity="center_vertical" />
+            android:textColor="@color/black_overlay"
+            android:maxLength="10"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="bottom"
+            android:gravity="right" />
 
     </LinearLayout>
 
@@ -62,4 +76,5 @@
         android:id="@+id/separator3"
         android:visibility="visible"
         android:background="@color/silver"/>
+
 </LinearLayout>

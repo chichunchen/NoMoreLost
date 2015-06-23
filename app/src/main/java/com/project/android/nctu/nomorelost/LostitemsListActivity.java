@@ -67,7 +67,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
     private ImageView mMenu, thumbImageView;
     private LostitemListAdapter adapter;
     AlertDialog.Builder alert;
-    private TextView textViewCategory, textViewContact, textViewtitle;
+    private TextView textViewCategory, textViewdate, textViewtitle;
     private ProgressDialog progress;
     int setting = 0;
     int pos[];
@@ -310,8 +310,8 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
         adapter = new LostitemListAdapter(getApplicationContext(),
                 list,
                 R.layout.lostitems_row,
-                new String[]{"category", "title", "contact", "thumb"},
-                new int[]{R.id.lostitem_category, R.id.textView_title, R.id.textView_contact, R.id.imageView}
+                new String[]{"category", "title", "date", "thumb"},
+                new int[]{R.id.lostitem_category, R.id.textView_title, R.id.textView_date, R.id.imageView}
         );
 
         adapter.setViewBinder(new ViewBinder() {
@@ -452,7 +452,7 @@ public class LostitemsListActivity extends AppCompatActivity implements SearchVi
         mListView = (ListView) findViewById(R.id.lostitem_list);
         mListView.setEmptyView(findViewById(R.id.no_item_msg));
         textViewCategory = (TextView) findViewById(R.id.lostitem_category);
-        textViewContact = (TextView) findViewById(R.id.textView_contact);
+        textViewdate = (TextView) findViewById(R.id.textView_date);
         textViewtitle = (TextView) findViewById(R.id.textView_title);
         thumbImageView = (ImageView) findViewById(R.id.imageView);
         //view.setTag(holder);

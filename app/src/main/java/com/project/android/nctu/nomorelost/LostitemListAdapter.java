@@ -22,7 +22,7 @@ import java.util.Map;
 
 public class LostitemListAdapter extends SimpleAdapter {
     ImageView imageView;
-    TextView textViewCategory,textViewtitle;
+    TextView textViewCategory,textViewtitle,textViewdate;
     private Context mContext;
     public LayoutInflater inflater = null;
     ImageLoader imageLoader;
@@ -47,10 +47,12 @@ public class LostitemListAdapter extends SimpleAdapter {
      // ImageView imageView;
       imageView = (ImageView) vi.findViewById(R.id.imageView);
       textViewCategory = (TextView) vi.findViewById(R.id.lostitem_category);
-      //textViewContact = (TextView) findViewById(R.id.textView_contact);
+      textViewdate = (TextView) vi.findViewById(R.id.textView_date);
       textViewtitle = (TextView) vi.findViewById(R.id.textView_title);
         String title = (String)data.get("title");
         String category = (String)data.get("category");
+        String date=(String)data.get("created_at");
+        textViewdate.setText(date);
         textViewtitle.setText(title);
         textViewCategory.setText(category);
       String url = (String)data.get("thumb");
