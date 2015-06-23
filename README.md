@@ -7,7 +7,7 @@ An android app which is a platform devoting to help people find their lost items
 ## Snapshots
 
 ## Promote Video
-[![ScreenShot](http://static4.gamespot.com/uploads/screen_kubrick/469/4693985/2305502-default-art--kubrick.jpg)](https://www.youtube.com/watch?v=eFvlSmZxyEs&index=9&list=PLoR2h6cxEh7KIWRbmOaHdBbSf2Mgr6eax)
+[![ScreenShot](https://github.com/chichunchen/NoMoreLost/images/youtube-snapshot.png)](https://www.youtube.com/watch?v=eFvlSmZxyEs&index=9&list=PLoR2h6cxEh7KIWRbmOaHdBbSf2Mgr6eax)
 
 ## Contributing
 
