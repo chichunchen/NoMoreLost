@@ -113,7 +113,8 @@
                 android:textSize="24sp"
                 android:gravity="right"
                 android:textAlignment="gravity"
-                android:layout_marginRight="10dp" />
+                android:layout_marginRight="10dp"
+                android:maxLength="16" />
         </LinearLayout>
         <View
             android:layout_width="wrap_content"
@@ -145,7 +146,8 @@
                 android:textSize="24sp"
                 android:gravity="right"
                 android:textAlignment="gravity"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="10dp"
+                android:maxLength="36" />
         </LinearLayout>
 
         <LinearLayout
@@ -173,7 +175,9 @@
                 android:textSize="24sp"
                 android:gravity="right"
                 android:textAlignment="gravity"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="10dp"
+                android:maxLength="10"
+                android:maxLines="1" />
         </LinearLayout>
         <View
             android:layout_width="wrap_content"
@@ -190,6 +194,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/email"
+                android:inputType="textEmailAddress"
                 android:textColor="@color/logo_dark_green"
                 android:textSize="24sp"
                 android:gravity="center"
