@@ -52,10 +52,11 @@
                 android:layout_height="wrap_content"
 
                 android:layout_gravity="center_vertical"
+                android:maxLength="6"
                 android:text="TextView"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/black"
-                android:textSize="20dp" />
+                android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/textView_date"
@@ -63,13 +64,13 @@
                 android:layout_height="wrap_content"
 
                 android:layout_gravity="bottom|right"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="5dp"
                 android:gravity="right"
                 android:maxLength="10"
                 android:text="TextView"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/black_overlay"
-                android:textSize="12dp" />
+                android:textSize="10dp" />
 
         </LinearLayout>
     </LinearLayout>
