@@ -118,13 +118,14 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:weightSum="1">
 
             <ImageView
                 android:id="@+id/lostitem_image"
-                android:layout_width="344dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.73" />
+                android:layout_width="wrap_content"
+                android:layout_height="320dp"
+                android:layout_weight="1" />
         </LinearLayout>
 
     </LinearLayout>
