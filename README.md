@@ -14,8 +14,8 @@ An android app which is a platform devoting to help people find their lost items
 
 ## Downloads
 
-[![QR Code](https://lh3.ggpht.com/csXEddxiLgQ6FxckefjQnP1PVugbaAYOdcuTa3vVtGV1PlWbFu2dYggoH8rI1w2RdEz1=w50)](http://google.com) 
-[<img src="http://mobway.in/image/apk.png" height="45px" />](http://google.com)
+[![QR Code](https://lh3.ggpht.com/csXEddxiLgQ6FxckefjQnP1PVugbaAYOdcuTa3vVtGV1PlWbFu2dYggoH8rI1w2RdEz1=w50)](http://chichunchen.github.io/NoMoreLost/apk/NoMoreLost.apk)
+[<img src="http://mobway.in/image/apk.png" height="45px" />](http://chichunchen.github.io/NoMoreLost/apk/NoMoreLost.apk)
 
 ## Promote Video
 [![Check out our video](https://chichunchen.github.io/NoMoreLost/images/youtube-snapshot.png)](https://www.youtube.com/watch?v=eFvlSmZxyEs&index=9&list=PLoR2h6cxEh7KIWRbmOaHdBbSf2Mgr6eax)
