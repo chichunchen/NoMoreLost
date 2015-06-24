@@ -3,6 +3,7 @@ package com.project.android.nctu.nomorelost.utils;
 /**
  * Created by 聖傑 on 2015/6/21.
  */
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -31,7 +32,7 @@ public class DownloadTask extends AsyncTask<String, Void, Boolean> {
     @Override
     protected void onPostExecute(Boolean result) {
         // TODO Auto-generated method stub
-       // super.onPostExecute(result);
+        // super.onPostExecute(result);
         v.setImageBitmap(bm);
     }
 
@@ -43,10 +44,10 @@ public class DownloadTask extends AsyncTask<String, Void, Boolean> {
             return b;
         } catch (MalformedURLException e) {
             // TODO Auto-generated catch block
-           // e.printStackTrace();
+            // e.printStackTrace();
         } catch (IOException e) {
             // TODO Auto-generated catch block
-           // e.printStackTrace();
+            // e.printStackTrace();
         }
         return null;
     }

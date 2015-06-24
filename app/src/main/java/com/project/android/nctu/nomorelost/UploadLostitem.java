@@ -198,7 +198,8 @@ public class UploadLostitem extends AppCompatActivity {
         if (uploadContact.getText().length() == 0 ||
                 uploadMail.getText().length() == 0 ||
                 uploadDescription.getText().length() == 0 ||
-                uploadItemtitle.getText().length() == 0) {
+                uploadItemtitle.getText().length() == 0 ||
+                imageName == null) {
             return false;
         }
         return true;
